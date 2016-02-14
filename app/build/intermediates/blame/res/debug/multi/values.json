@@ -1,0 +1,262 @@
+[
+    {
+        "outputFile": "C:\\Users\\shay\\AndroidStudioProjects\\MegilatEster\\app\\build\\intermediates\\res\\merged\\debug\\values\\values.xml",
+        "map": [
+            {
+                "to": {
+                    "startLine": 2,
+                    "startColumn": 4,
+                    "startOffset": 55,
+                    "endColumn": 57,
+                    "endOffset": 108
+                },
+                "from": {
+                    "file": "C:\\Users\\shay\\AndroidStudioProjects\\MegilatEster\\app\\src\\main\\res\\values\\dimens.xml",
+                    "position": {
+                        "startLine": 3,
+                        "startColumn": 4,
+                        "startOffset": 92,
+                        "endColumn": 57,
+                        "endOffset": 145
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 3,
+                    "startColumn": 4,
+                    "startOffset": 113,
+                    "endColumn": 55,
+                    "endOffset": 164
+                },
+                "from": {
+                    "file": "C:\\Users\\shay\\AndroidStudioProjects\\MegilatEster\\app\\src\\main\\res\\values\\dimens.xml",
+                    "position": {
+                        "startLine": 4,
+                        "startColumn": 4,
+                        "startOffset": 151,
+                        "endColumn": 55,
+                        "endOffset": 202
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 4,
+                    "startColumn": 4,
+                    "startOffset": 169,
+                    "endLine": 9,
+                    "endColumn": 27,
+                    "endOffset": 449
+                },
+                "from": {
+                    "file": "C:\\Users\\shay\\AndroidStudioProjects\\MegilatEster\\app\\src\\main\\res\\values\\strings.xml",
+                    "position": {
+                        "startLine": 5,
+                        "startColumn": 4,
+                        "startOffset": 159,
+                        "endLine": 10,
+                        "endColumn": 27,
+                        "endOffset": 439
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 10,
+                    "startColumn": 4,
+                    "startOffset": 454,
+                    "endColumn": 52,
+                    "endOffset": 502
+                },
+                "from": {
+                    "file": "C:\\Users\\shay\\AndroidStudioProjects\\MegilatEster\\app\\src\\main\\res\\values\\strings.xml",
+                    "position": {
+                        "startLine": 4,
+                        "startColumn": 4,
+                        "startOffset": 106,
+                        "endColumn": 52,
+                        "endOffset": 154
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 11,
+                    "startColumn": 4,
+                    "startOffset": 507,
+                    "endColumn": 49,
+                    "endOffset": 552
+                },
+                "from": {
+                    "file": "C:\\Users\\shay\\AndroidStudioProjects\\MegilatEster\\app\\src\\main\\res\\values\\strings.xml",
+                    "position": {
+                        "startLine": 3,
+                        "startColumn": 4,
+                        "startOffset": 56,
+                        "endColumn": 49,
+                        "endOffset": 101
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 12,
+                    "startColumn": 4,
+                    "startOffset": 557,
+                    "endColumn": 52,
+                    "endOffset": 605
+                },
+                "from": {
+                    "file": "C:\\Users\\shay\\AndroidStudioProjects\\MegilatEster\\app\\src\\main\\res\\values\\strings.xml",
+                    "position": {
+                        "startLine": 37,
+                        "startColumn": 4,
+                        "startOffset": 28575,
+                        "endColumn": 52,
+                        "endOffset": 28623
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 13,
+                    "startColumn": 4,
+                    "startOffset": 610,
+                    "endColumn": 65,
+                    "endOffset": 671
+                },
+                "from": {
+                    "file": "C:\\Users\\shay\\AndroidStudioProjects\\MegilatEster\\app\\src\\main\\res\\values\\strings.xml",
+                    "position": {
+                        "startLine": 35,
+                        "startColumn": 4,
+                        "startOffset": 28454,
+                        "endColumn": 65,
+                        "endOffset": 28515
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 14,
+                    "startColumn": 4,
+                    "startOffset": 676,
+                    "endLine": 35,
+                    "endColumn": 448,
+                    "endOffset": 28541
+                },
+                "from": {
+                    "file": "C:\\Users\\shay\\AndroidStudioProjects\\MegilatEster\\app\\src\\main\\res\\values\\strings.xml",
+                    "position": {
+                        "startLine": 11,
+                        "startColumn": 4,
+                        "startOffset": 444,
+                        "endLine": 32,
+                        "endColumn": 448,
+                        "endOffset": 28309
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 36,
+                    "startColumn": 4,
+                    "startOffset": 28546,
+                    "endColumn": 70,
+                    "endOffset": 28612
+                },
+                "from": {
+                    "file": "C:\\Users\\shay\\AndroidStudioProjects\\MegilatEster\\app\\src\\main\\res\\values\\strings.xml",
+                    "position": {
+                        "startLine": 33,
+                        "startColumn": 4,
+                        "startOffset": 28314,
+                        "endColumn": 70,
+                        "endOffset": 28380
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 37,
+                    "startColumn": 4,
+                    "startOffset": 28617,
+                    "endColumn": 68,
+                    "endOffset": 28681
+                },
+                "from": {
+                    "file": "C:\\Users\\shay\\AndroidStudioProjects\\MegilatEster\\app\\src\\main\\res\\values\\strings.xml",
+                    "position": {
+                        "startLine": 34,
+                        "startColumn": 4,
+                        "startOffset": 28385,
+                        "endColumn": 68,
+                        "endOffset": 28449
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 38,
+                    "startColumn": 4,
+                    "startOffset": 28686,
+                    "endColumn": 54,
+                    "endOffset": 28736
+                },
+                "from": {
+                    "file": "C:\\Users\\shay\\AndroidStudioProjects\\MegilatEster\\app\\src\\main\\res\\values\\strings.xml",
+                    "position": {
+                        "startLine": 36,
+                        "startColumn": 4,
+                        "startOffset": 28520,
+                        "endColumn": 54,
+                        "endOffset": 28570
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 39,
+                    "startColumn": 4,
+                    "startOffset": 28741,
+                    "endLine": 45,
+                    "endColumn": 12,
+                    "endOffset": 29027
+                },
+                "from": {
+                    "file": "C:\\Users\\shay\\AndroidStudioProjects\\MegilatEster\\app\\src\\main\\res\\values\\styles.xml",
+                    "position": {
+                        "startLine": 6,
+                        "startColumn": 4,
+                        "startOffset": 191,
+                        "endLine": 12,
+                        "endColumn": 12,
+                        "endOffset": 481
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 46,
+                    "startColumn": 4,
+                    "startOffset": 29032,
+                    "endLine": 48,
+                    "endColumn": 12,
+                    "endOffset": 29187
+                },
+                "from": {
+                    "file": "C:\\Users\\shay\\AndroidStudioProjects\\MegilatEster\\app\\src\\main\\res\\values\\styles.xml",
+                    "position": {
+                        "startLine": 15,
+                        "startColumn": 4,
+                        "startOffset": 522,
+                        "endLine": 17,
+                        "endColumn": 12,
+                        "endOffset": 679
+                    }
+                }
+            }
+        ]
+    }
+]

@@ -1,0 +1,26 @@
+[
+    {
+        "merged": "C:\\Users\\shay\\AndroidStudioProjects\\MegilatEster\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_settings.xml",
+        "source": "C:\\Users\\shay\\AndroidStudioProjects\\MegilatEster\\app\\src\\main\\res\\layout\\activity_settings.xml"
+    },
+    {
+        "merged": "C:\\Users\\shay\\AndroidStudioProjects\\MegilatEster\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_laws_of_purim_2.xml",
+        "source": "C:\\Users\\shay\\AndroidStudioProjects\\MegilatEster\\app\\src\\main\\res\\layout\\activity_laws_of_purim_2.xml"
+    },
+    {
+        "merged": "C:\\Users\\shay\\AndroidStudioProjects\\MegilatEster\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_songs.xml",
+        "source": "C:\\Users\\shay\\AndroidStudioProjects\\MegilatEster\\app\\src\\main\\res\\layout\\activity_songs.xml"
+    },
+    {
+        "merged": "C:\\Users\\shay\\AndroidStudioProjects\\MegilatEster\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_main.xml",
+        "source": "C:\\Users\\shay\\AndroidStudioProjects\\MegilatEster\\app\\src\\main\\res\\layout\\activity_main.xml"
+    },
+    {
+        "merged": "C:\\Users\\shay\\AndroidStudioProjects\\MegilatEster\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_laws_of_purim.xml",
+        "source": "C:\\Users\\shay\\AndroidStudioProjects\\MegilatEster\\app\\src\\main\\res\\layout\\activity_laws_of_purim.xml"
+    },
+    {
+        "merged": "C:\\Users\\shay\\AndroidStudioProjects\\MegilatEster\\app\\build\\intermediates\\res\\merged\\debug\\layout\\splash.xml",
+        "source": "C:\\Users\\shay\\AndroidStudioProjects\\MegilatEster\\app\\src\\main\\res\\layout\\splash.xml"
+    }
+]

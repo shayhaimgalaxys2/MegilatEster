@@ -1,0 +1,42 @@
+[
+    {
+        "merged": "C:\\Users\\shay\\AndroidStudioProjects\\MegilatEster\\app\\build\\intermediates\\res\\merged\\debug\\raw\\song6.mp3",
+        "source": "C:\\Users\\shay\\AndroidStudioProjects\\MegilatEster\\app\\src\\main\\res\\raw\\song6.mp3"
+    },
+    {
+        "merged": "C:\\Users\\shay\\AndroidStudioProjects\\MegilatEster\\app\\build\\intermediates\\res\\merged\\debug\\raw\\song1.mp3",
+        "source": "C:\\Users\\shay\\AndroidStudioProjects\\MegilatEster\\app\\src\\main\\res\\raw\\song1.mp3"
+    },
+    {
+        "merged": "C:\\Users\\shay\\AndroidStudioProjects\\MegilatEster\\app\\build\\intermediates\\res\\merged\\debug\\raw\\explosion.mp3",
+        "source": "C:\\Users\\shay\\AndroidStudioProjects\\MegilatEster\\app\\src\\main\\res\\raw\\explosion.mp3"
+    },
+    {
+        "merged": "C:\\Users\\shay\\AndroidStudioProjects\\MegilatEster\\app\\build\\intermediates\\res\\merged\\debug\\raw\\somenoise.mp3",
+        "source": "C:\\Users\\shay\\AndroidStudioProjects\\MegilatEster\\app\\src\\main\\res\\raw\\somenoise.mp3"
+    },
+    {
+        "merged": "C:\\Users\\shay\\AndroidStudioProjects\\MegilatEster\\app\\build\\intermediates\\res\\merged\\debug\\raw\\song7.mp3",
+        "source": "C:\\Users\\shay\\AndroidStudioProjects\\MegilatEster\\app\\src\\main\\res\\raw\\song7.mp3"
+    },
+    {
+        "merged": "C:\\Users\\shay\\AndroidStudioProjects\\MegilatEster\\app\\build\\intermediates\\res\\merged\\debug\\raw\\song4.mp3",
+        "source": "C:\\Users\\shay\\AndroidStudioProjects\\MegilatEster\\app\\src\\main\\res\\raw\\song4.mp3"
+    },
+    {
+        "merged": "C:\\Users\\shay\\AndroidStudioProjects\\MegilatEster\\app\\build\\intermediates\\res\\merged\\debug\\raw\\song5.mp3",
+        "source": "C:\\Users\\shay\\AndroidStudioProjects\\MegilatEster\\app\\src\\main\\res\\raw\\song5.mp3"
+    },
+    {
+        "merged": "C:\\Users\\shay\\AndroidStudioProjects\\MegilatEster\\app\\build\\intermediates\\res\\merged\\debug\\raw\\machinegun.mp3",
+        "source": "C:\\Users\\shay\\AndroidStudioProjects\\MegilatEster\\app\\src\\main\\res\\raw\\machinegun.mp3"
+    },
+    {
+        "merged": "C:\\Users\\shay\\AndroidStudioProjects\\MegilatEster\\app\\build\\intermediates\\res\\merged\\debug\\raw\\song2.mp3",
+        "source": "C:\\Users\\shay\\AndroidStudioProjects\\MegilatEster\\app\\src\\main\\res\\raw\\song2.mp3"
+    },
+    {
+        "merged": "C:\\Users\\shay\\AndroidStudioProjects\\MegilatEster\\app\\build\\intermediates\\res\\merged\\debug\\raw\\song3.mp3",
+        "source": "C:\\Users\\shay\\AndroidStudioProjects\\MegilatEster\\app\\src\\main\\res\\raw\\song3.mp3"
+    }
+]

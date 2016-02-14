@@ -1,0 +1,18 @@
+[
+    {
+        "merged": "C:\\Users\\shay\\AndroidStudioProjects\\MegilatEster\\app\\build\\intermediates\\res\\merged\\debug\\menu\\settings.xml",
+        "source": "C:\\Users\\shay\\AndroidStudioProjects\\MegilatEster\\app\\src\\main\\res\\menu\\settings.xml"
+    },
+    {
+        "merged": "C:\\Users\\shay\\AndroidStudioProjects\\MegilatEster\\app\\build\\intermediates\\res\\merged\\debug\\menu\\laws_of_purim.xml",
+        "source": "C:\\Users\\shay\\AndroidStudioProjects\\MegilatEster\\app\\src\\main\\res\\menu\\laws_of_purim.xml"
+    },
+    {
+        "merged": "C:\\Users\\shay\\AndroidStudioProjects\\MegilatEster\\app\\build\\intermediates\\res\\merged\\debug\\menu\\main.xml",
+        "source": "C:\\Users\\shay\\AndroidStudioProjects\\MegilatEster\\app\\src\\main\\res\\menu\\main.xml"
+    },
+    {
+        "merged": "C:\\Users\\shay\\AndroidStudioProjects\\MegilatEster\\app\\build\\intermediates\\res\\merged\\debug\\menu\\songs.xml",
+        "source": "C:\\Users\\shay\\AndroidStudioProjects\\MegilatEster\\app\\src\\main\\res\\menu\\songs.xml"
+    }
+]

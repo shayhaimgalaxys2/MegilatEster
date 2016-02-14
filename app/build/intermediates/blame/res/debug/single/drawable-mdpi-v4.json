@@ -1,0 +1,54 @@
+[
+    {
+        "merged": "C:\\Users\\shay\\AndroidStudioProjects\\MegilatEster\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4\\scroll_background.png",
+        "source": "C:\\Users\\shay\\AndroidStudioProjects\\MegilatEster\\app\\src\\main\\res\\drawable-mdpi\\scroll_background.png"
+    },
+    {
+        "merged": "C:\\Users\\shay\\AndroidStudioProjects\\MegilatEster\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4\\settings_26.png",
+        "source": "C:\\Users\\shay\\AndroidStudioProjects\\MegilatEster\\app\\src\\main\\res\\drawable-mdpi\\settings_26.png"
+    },
+    {
+        "merged": "C:\\Users\\shay\\AndroidStudioProjects\\MegilatEster\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4\\torah64.png",
+        "source": "C:\\Users\\shay\\AndroidStudioProjects\\MegilatEster\\app\\src\\main\\res\\drawable-mdpi\\torah64.png"
+    },
+    {
+        "merged": "C:\\Users\\shay\\AndroidStudioProjects\\MegilatEster\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4\\laws_of_purim.jpg",
+        "source": "C:\\Users\\shay\\AndroidStudioProjects\\MegilatEster\\app\\src\\main\\res\\drawable-mdpi\\laws_of_purim.jpg"
+    },
+    {
+        "merged": "C:\\Users\\shay\\AndroidStudioProjects\\MegilatEster\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4\\noisemaker.png",
+        "source": "C:\\Users\\shay\\AndroidStudioProjects\\MegilatEster\\app\\src\\main\\res\\drawable-mdpi\\noisemaker.png"
+    },
+    {
+        "merged": "C:\\Users\\shay\\AndroidStudioProjects\\MegilatEster\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4\\mybutton.xml",
+        "source": "C:\\Users\\shay\\AndroidStudioProjects\\MegilatEster\\app\\src\\main\\res\\drawable-mdpi\\mybutton.xml"
+    },
+    {
+        "merged": "C:\\Users\\shay\\AndroidStudioProjects\\MegilatEster\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4\\purim_pic.jpg",
+        "source": "C:\\Users\\shay\\AndroidStudioProjects\\MegilatEster\\app\\src\\main\\res\\drawable-mdpi\\purim_pic.jpg"
+    },
+    {
+        "merged": "C:\\Users\\shay\\AndroidStudioProjects\\MegilatEster\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4\\noisemaker1.png",
+        "source": "C:\\Users\\shay\\AndroidStudioProjects\\MegilatEster\\app\\src\\main\\res\\drawable-mdpi\\noisemaker1.png"
+    },
+    {
+        "merged": "C:\\Users\\shay\\AndroidStudioProjects\\MegilatEster\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4\\icon_256.png",
+        "source": "C:\\Users\\shay\\AndroidStudioProjects\\MegilatEster\\app\\src\\main\\res\\drawable-mdpi\\icon_256.png"
+    },
+    {
+        "merged": "C:\\Users\\shay\\AndroidStudioProjects\\MegilatEster\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4\\gun64.png",
+        "source": "C:\\Users\\shay\\AndroidStudioProjects\\MegilatEster\\app\\src\\main\\res\\drawable-mdpi\\gun64.png"
+    },
+    {
+        "merged": "C:\\Users\\shay\\AndroidStudioProjects\\MegilatEster\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4\\grenade64.png",
+        "source": "C:\\Users\\shay\\AndroidStudioProjects\\MegilatEster\\app\\src\\main\\res\\drawable-mdpi\\grenade64.png"
+    },
+    {
+        "merged": "C:\\Users\\shay\\AndroidStudioProjects\\MegilatEster\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4\\ic_launcher.png",
+        "source": "C:\\Users\\shay\\AndroidStudioProjects\\MegilatEster\\app\\src\\main\\res\\drawable-mdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "C:\\Users\\shay\\AndroidStudioProjects\\MegilatEster\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4\\noisemaker2.png",
+        "source": "C:\\Users\\shay\\AndroidStudioProjects\\MegilatEster\\app\\src\\main\\res\\drawable-mdpi\\noisemaker2.png"
+    }
+]

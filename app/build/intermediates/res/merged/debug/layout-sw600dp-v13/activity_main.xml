@@ -1,0 +1,95 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" 
+    android:background="@android:color/darker_gray"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="-12dp"
+        android:layout_marginRight="-12dp"
+        android:layout_marginTop="5dp"
+        android:layout_weight="488"
+        android:background="@drawable/scroll_background"
+        android:orientation="vertical" >
+
+        <ScrollView
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_marginBottom="57dp"
+            android:layout_marginTop="57dp" >
+
+            <TextView
+                android:id="@+id/myTextViewTv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="25dp"
+                android:layout_marginLeft="41dp"
+                android:layout_marginRight="55dp"
+                android:textSize="27sp"
+                android:textColor="@android:color/black"
+                android:keepScreenOn="true"
+                />
+        </ScrollView>
+    </LinearLayout>
+    <LinearLayout 
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_weight="3"
+        android:weightSum="10"
+        android:layout_gravity="center_horizontal"
+        >
+        
+
+      <ImageButton
+         
+        android:id="@+id/lawsBtn"
+        android:layout_width="82dp"
+        android:layout_height="76dp"
+        android:src="@drawable/torah64"
+        android:layout_weight="2.5"
+       
+        
+         />
+      
+      <ImageButton
+        android:id="@+id/rahashanBtn"
+        android:layout_width="82dp"
+        android:layout_height="76dp"
+        android:src="@drawable/noisemaker1"
+        android:layout_weight="2.5"
+       
+        
+         />
+      
+      <ImageButton
+        android:id="@+id/gunfireBtn"
+        android:layout_width="82dp"
+        android:layout_height="76dp"
+        android:src="@drawable/gun64"
+        android:layout_weight="2.5"
+        
+        
+         />
+
+    <ImageButton
+        android:id="@+id/grenadeBtn"
+        android:layout_width="82dp"
+        android:layout_height="76dp"
+        android:src="@drawable/grenade64"
+        android:layout_weight="2.5"
+       
+        
+         />
+    
+    
+    
+
+    </LinearLayout>
+    
+
+</LinearLayout>
