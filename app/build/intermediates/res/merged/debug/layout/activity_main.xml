@@ -2,49 +2,47 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical" 
     android:background="@android:color/darker_gray"
-    >
+    android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:orientation="horizontal"
-        android:weightSum="10" >
-	<LinearLayout 
-	    android:layout_width="match_parent"
-	    android:layout_height="40dp"
-	    android:orientation="vertical"
-	    android:layout_weight="9">
-	    
-	    <TextView 
-	        android:text="Move to autoscroll"
-	        android:textColor="@android:color/black"
-	        android:layout_width="wrap_content"
-	        android:layout_height="15dp"
-	        android:layout_gravity="center_horizontal"/>
-	    
-        <SeekBar
-            android:layout_marginTop="2dp"
-            android:max="6"
-            android:id="@+id/seekbar1"
+        android:weightSum="10">
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="25dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginRight="8dp"
-            android:layout_marginBottom="8dp"
-             />
-        
-	</LinearLayout>
-	
-       <ImageButton 
-           android:layout_marginTop="2dp"
-           android:layout_width="wrap_content"
-           android:layout_height="wrap_content"
-           android:id="@+id/settingsButton"
-           android:layout_weight="1"
-           android:src="@drawable/settings_26"
-           />
+            android:layout_height="40dp"
+            android:layout_weight="9"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="15dp"
+                android:layout_gravity="center_horizontal"
+                android:text="Move to autoscroll"
+                android:textColor="@android:color/black" />
+
+            <SeekBar
+                android:id="@+id/seekbar1"
+                android:layout_width="match_parent"
+                android:layout_height="25dp"
+                android:layout_marginBottom="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginTop="2dp"
+                android:max="6" />
+
+        </LinearLayout>
+
+        <ImageButton
+            android:id="@+id/settingsButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:layout_weight="1"
+            android:src="@drawable/settings_26" />
     </LinearLayout>
 
     <LinearLayout
@@ -55,16 +53,30 @@
         android:layout_marginTop="3dp"
         android:layout_weight="488"
         android:background="@drawable/scroll_background"
-        android:orientation="vertical" >
+        android:orientation="vertical">
 
-       
 
-        <ScrollView
+        <TextView
+            android:id="@+id/blessingsTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="6dp"
+            android:background="@android:color/darker_gray"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            android:text="ברכות המגילה"
+            android:textColor="@android:color/black"
+            android:textSize="15sp" />
+
+
+        <com.mobilegiants.megila.InteractiveScrollView
             android:id="@+id/myscrollview"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:layout_marginBottom="34dp"
-            android:layout_marginTop="32dp" >
+            android:layout_marginTop="20dp">
+
 
             <TextView
                 android:id="@+id/myTextViewTv"
@@ -73,65 +85,62 @@
                 android:layout_marginBottom="25dp"
                 android:layout_marginLeft="34dp"
                 android:layout_marginRight="45dp"
-                android:textSize="24sp"
-                android:textColor="@android:color/black"
                 android:keepScreenOn="true"
-                />
-        </ScrollView>
+                android:textColor="@android:color/black"
+                android:textSize="24sp" />
+        </com.mobilegiants.megila.InteractiveScrollView>
     </LinearLayout>
-    <LinearLayout 
+
+    <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_weight="3"
-        android:weightSum="10"
         android:layout_gravity="center_horizontal"
-        >
-        
+        android:layout_weight="3"
+        android:orientation="horizontal"
+        android:weightSum="10">
 
-      <ImageButton
-        android:id="@+id/lawsBtn"
-        android:layout_width="82dp"
-        android:layout_height="76dp"
-        android:src="@drawable/torah64"
-        android:layout_weight="2.5"
-       
-        
-         />
-      
-      <ImageButton
-        android:id="@+id/rahashanBtn"
-        android:layout_width="82dp"
-        android:layout_height="76dp"
-        android:src="@drawable/noisemaker1"
-        android:layout_weight="2.5"
-       
-        
-         />
-      
-      <ImageButton
-        android:id="@+id/gunfireBtn"
-        android:layout_width="82dp"
-        android:layout_height="76dp"
-        android:src="@drawable/gun64"
-        android:layout_weight="2.5"
-        
-         />
 
-    <ImageButton
-        android:id="@+id/grenadeBtn"
-        android:layout_width="82dp"
-        android:layout_height="76dp"
-        android:src="@drawable/grenade64"
-        android:layout_weight="2.5"
-       
-        
-         />
-    
-    
-    
+        <ImageButton
+            android:id="@+id/lawsBtn"
+            android:layout_width="82dp"
+            android:layout_height="76dp"
+            android:layout_weight="2.5"
+            android:src="@drawable/torah64"
+
+
+            />
+
+        <ImageButton
+            android:id="@+id/rahashanBtn"
+            android:layout_width="82dp"
+            android:layout_height="76dp"
+            android:layout_weight="2.5"
+            android:src="@drawable/noisemaker1"
+
+
+            />
+
+        <ImageButton
+            android:id="@+id/gunfireBtn"
+            android:layout_width="82dp"
+            android:layout_height="76dp"
+            android:layout_weight="2.5"
+            android:src="@drawable/gun64"
+
+            />
+
+        <ImageButton
+            android:id="@+id/grenadeBtn"
+            android:layout_width="82dp"
+            android:layout_height="76dp"
+            android:layout_weight="2.5"
+            android:src="@drawable/grenade64"
+
+
+            />
+
 
     </LinearLayout>
-    
+
 
 </LinearLayout>

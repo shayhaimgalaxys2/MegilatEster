@@ -30,22 +30,23 @@ public final class R {
         public static final int torah64=0x7f02000c;
     }
     public static final class id {
-        public static final int action_settings=0x7f09000f;
-        public static final int grenadeBtn=0x7f090008;
-        public static final int gunfireBtn=0x7f090007;
+        public static final int action_settings=0x7f090010;
+        public static final int blessingsTv=0x7f090003;
+        public static final int grenadeBtn=0x7f090009;
+        public static final int gunfireBtn=0x7f090008;
         public static final int imgDisplay=0x7f090000;
-        public static final int lawsBtn=0x7f090005;
-        public static final int myTextViewTv=0x7f090004;
-        public static final int myscrollview=0x7f090003;
-        public static final int purimSongsBtn=0x7f09000a;
-        public static final int rahashanBtn=0x7f090006;
+        public static final int lawsBtn=0x7f090006;
+        public static final int myTextViewTv=0x7f090005;
+        public static final int myscrollview=0x7f090004;
+        public static final int purimSongsBtn=0x7f09000b;
+        public static final int rahashanBtn=0x7f090007;
         public static final int seekbar1=0x7f090001;
         public static final int settingsButton=0x7f090002;
-        public static final int splash_layout=0x7f09000d;
-        public static final int stopBtn=0x7f09000c;
-        public static final int switchBtn=0x7f09000b;
-        public static final int textView=0x7f090009;
-        public static final int textView1=0x7f09000e;
+        public static final int splash_layout=0x7f09000e;
+        public static final int stopBtn=0x7f09000d;
+        public static final int switchBtn=0x7f09000c;
+        public static final int textView=0x7f09000a;
+        public static final int textView1=0x7f09000f;
     }
     public static final class layout {
         public static final int activity_laws_of_purim=0x7f030000;
@@ -77,12 +78,14 @@ public final class R {
         public static final int abaut_us=0x7f070000;
         public static final int action_settings=0x7f070001;
         public static final int app_name=0x7f070002;
-        public static final int hello_world=0x7f070003;
-        public static final int shake_to_randomize=0x7f070004;
-        public static final int text=0x7f070005;
-        public static final int title_activity_laws_of_purim=0x7f070006;
-        public static final int title_activity_settings=0x7f070007;
-        public static final int title_activity_songs=0x7f070008;
+        public static final int blessings_after_the_reading=0x7f070003;
+        public static final int blessings_before_the_reading=0x7f070004;
+        public static final int hello_world=0x7f070005;
+        public static final int shake_to_randomize=0x7f070006;
+        public static final int text=0x7f070007;
+        public static final int title_activity_laws_of_purim=0x7f070008;
+        public static final int title_activity_settings=0x7f070009;
+        public static final int title_activity_songs=0x7f07000a;
     }
     public static final class style {
         /**  API 11 theme customizations can go here. 

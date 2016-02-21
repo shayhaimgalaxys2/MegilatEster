@@ -11,8 +11,8 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="46dp"
-        android:text="Developed by Mobile Giants inc "
+        android:layout_marginBottom="26dp"
+        android:text="Developed by Shay Haim"
         android:textColor="@android:color/black"
         android:textSize="22sp" />
 
