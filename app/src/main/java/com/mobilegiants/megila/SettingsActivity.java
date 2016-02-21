@@ -12,67 +12,79 @@ import android.widget.ToggleButton;
 
 public class SettingsActivity extends Activity {
 
-	private static final String MyPREFERENCES = "myPreference";
-	private ToggleButton switchBtn;
-	private SharedPreferences sharedpreferences;
-	private Button purimSongsBtn;
-	
-	@Override
-	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_settings);
-		purimSongsBtn = (Button) findViewById(R.id.purimSongsBtn);
-		switchBtn = (ToggleButton) findViewById(R.id.switchBtn); 
-		sharedpreferences = getSharedPreferences(MyPREFERENCES, SettingsActivity.MODE_PRIVATE);
-		
-		purimSongsBtn.setOnClickListener(new OnClickListener() {
-			
-			@Override
-			public void onClick(View v) {
-				// TODO Auto-generated method stub
-				Intent intent = new Intent(SettingsActivity.this, Songs.class);
-				startActivity(intent);
-			}
-		});
-		
-		
-	}
-	
-    protected void onResume() {
-        super.onResume();
-    	SharedPreferences sp = getSharedPreferences(MyPREFERENCES, SettingsActivity.MODE_PRIVATE);
-    	boolean temp1 = sp.getBoolean("isSwitchOn", true);
-    	if (temp1) {
-    		switchBtn.setChecked(true);
-		}else {
-			switchBtn.setChecked(false);
-		}
+    private static final String MyPREFERENCES = "myPreference";
+
+    private ToggleButton switchBtn;
+    private Button purimSongsBtn;
+    private SharedPreferences sharedpreferences;
+
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_settings);
+        initViews();
+        initSharePrefences();
+        initListeners();
+
+
     }
 
 
-	public void onToggleClicked(View view) {
-	    // Is the toggle on?
-	    boolean on = ((ToggleButton) view).isChecked();
-	    
-	    if (on) {
-	        // Enable vibrate
-	    	Editor editor = sharedpreferences.edit();
-	    	editor.putBoolean("isSwitchOn", true);
-	    	editor.commit();
-//	    	SharedPreferences sp = getSharedPreferences(MyPREFERENCES, SettingsActivity.MODE_PRIVATE);
-//	    	boolean temp = sp.getBoolean("isSwitchOn", true);
-//	    	String tempS = String.valueOf(temp);
-//	    	Toast.makeText(getApplicationContext(),String.valueOf(tempS), Toast.LENGTH_SHORT).show();
-	    } else {
-	        // Disable vibrate
-	    	Editor editor = sharedpreferences.edit();
-	    	editor.putBoolean("isSwitchOn", false);
-	    	editor.commit();
-//	    	SharedPreferences sp = getSharedPreferences(MyPREFERENCES, SettingsActivity.MODE_PRIVATE);
-//	    	boolean temp = sp.getBoolean("isSwitchOn", true);
-//	    	String tempS = String.valueOf(temp);
-//	    	Toast.makeText(getApplicationContext(),String.valueOf(tempS), Toast.LENGTH_SHORT).show();
-	    }
-	}
+    private void initViews() {
+
+        purimSongsBtn = (Button) findViewById(R.id.purimSongsBtn);
+        switchBtn = (ToggleButton) findViewById(R.id.switchBtn);
+    }
+
+    private void initSharePrefences() {
+        sharedpreferences = getSharedPreferences(MyPREFERENCES, SettingsActivity.MODE_PRIVATE);
+    }
+
+    private void initListeners() {
+        purimSongsBtn.setOnClickListener(new OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(SettingsActivity.this, Songs.class);
+                startActivity(intent);
+            }
+        });
+
+        switchBtn.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onToggleClicked(v);
+            }
+        });
+    }
+
+    protected void onResume() {
+        super.onResume();
+        SharedPreferences sp = getSharedPreferences(MyPREFERENCES, SettingsActivity.MODE_PRIVATE);
+        boolean temp1 = sp.getBoolean("isSwitchOn", true);
+        if (temp1) {
+            switchBtn.setChecked(true);
+        } else {
+            switchBtn.setChecked(false);
+        }
+    }
+
+
+    public void onToggleClicked(View view) {
+
+        boolean on = ((ToggleButton) view).isChecked();
+        if (on) {
+            Editor editor = sharedpreferences.edit();
+            editor.putBoolean("isSwitchOn", true);
+            editor.commit();
+        } else {
+            Editor editor = sharedpreferences.edit();
+            editor.putBoolean("isSwitchOn", false);
+            editor.commit();
+        }
+    }
 
 }

@@ -11,7 +11,7 @@ public class Laws_of_purim extends Activity {
 		try {
 			setContentView(R.layout.activity_laws_of_purim);
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
+
 			e.printStackTrace();
 			setContentView(R.layout.activity_laws_of_purim_2);
 		}

@@ -24,9 +24,21 @@ public class Songs extends ListActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_songs);
+        initViews();
+        initListeners();
+        initAdapter();
+        initListOnItemClickListener();
+    }
+
+
+    private void initViews() {
 
         stopBtn = (Button) findViewById(R.id.stopBtn);
+    }
+
+    private void initListeners() {
         stopBtn.setOnClickListener(new OnClickListener() {
 
             @Override
@@ -43,7 +55,9 @@ public class Songs extends ListActivity {
 
             }
         });
+    }
 
+    private void initAdapter() {
         ArrayList<String> songs = new ArrayList<String>();
         songs.add("משנכנס אדר");
         songs.add("ונהפוך הוא");
@@ -58,7 +72,12 @@ public class Songs extends ListActivity {
 
         setListAdapter(adapter);
 
+    }
+
+    private void initListOnItemClickListener() {
+
         ListView songsList = getListView();
+
         songsList.setOnItemClickListener(new OnItemClickListener() {
 
             @Override
@@ -97,11 +116,5 @@ public class Songs extends ListActivity {
         });
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.songs, menu);
-        return true;
-    }
 
 }
