@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">מגילת אסתר</string>
+    <string name="purim_songs">שירים לפורים</string>
+    <string name="megilla_blessings">ברכות המגילה</string>
+    <string name="play_song">נגן</string>
+    <string name="pause_song">עצור</string>
+    <string name="blessings_dialog_close">סגור</string>
+    <string name="auto_scroll_dialog_title">אנא בחר מהירות גלילה אוטומטית</string>
+    <string name="auto_scroll_dialog_confirm">אישור</string>
+    <string name="auto_scroll_dialog_cancel">ביטול</string>
+</resources>
+
+

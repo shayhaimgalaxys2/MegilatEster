@@ -1,0 +1,59 @@
+plugins {
+    id 'com.android.application'
+    id 'com.google.gms.google-services'
+    id 'com.google.firebase.crashlytics'
+}
+android {
+    defaultConfig {
+        applicationId "com.mobilegiants.megila"
+        compileSdk 34
+        minSdkVersion 23
+        targetSdkVersion 34
+        versionCode = 20
+        versionName = "1.2.0"
+        multiDexEnabled = true
+    }
+
+    signingConfigs {
+        signingRelease {
+            storeFile file("keystore/prod/release.keystore")
+            storePassword "30061990"
+            keyAlias "shay"
+            keyPassword "30061990"
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            signingConfig signingConfigs.signingRelease
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
+        }
+    }
+    namespace 'com.mobilegiants.megila'
+}
+
+dependencies {
+    implementation("androidx.appcompat:appcompat:1.6.1")
+    implementation("androidx.activity:activity:1.8.2")
+    implementation("androidx.appcompat:appcompat-resources:1.6.1")
+    implementation 'com.android.support:multidex:1.0.3'
+    implementation 'com.google.android.gms:play-services-ads:22.6.0'
+    implementation "com.airbnb.android:lottie:3.4.1"
+    implementation "com.intuit.sdp:sdp-android:1.0.6"
+    implementation "com.intuit.ssp:ssp-android:1.0.6"
+    implementation platform('com.google.firebase:firebase-bom:31.1.1')
+    implementation 'com.google.firebase:firebase-crashlytics-ktx'
+    implementation 'com.google.firebase:firebase-analytics-ktx'
+    implementation "com.google.firebase:firebase-messaging:23.4.1"
+    implementation 'com.pixplicity.easyprefs:EasyPrefs:1.10.0'
+
+
+    implementation 'com.pushwoosh:pushwoosh:6.7.2'
+    implementation 'com.pushwoosh:pushwoosh-firebase:6.7.2'
+}

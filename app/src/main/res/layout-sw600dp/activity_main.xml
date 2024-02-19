@@ -1,0 +1,145 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#D8C6A3"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginLeft="-9dp"
+        android:layout_marginTop="3dp"
+        android:layout_marginRight="-9dp"
+        android:layout_weight="488"
+        android:background="@drawable/scroll_background"
+        android:orientation="vertical">
+
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:paddingTop="15dp">
+
+            <ImageButton
+                android:layout_marginRight="60dp"
+                android:paddingLeft="24dp"
+                android:paddingTop="16dp"
+                android:paddingRight="24dp"
+                android:paddingBottom="16dp"
+                android:background="#bb000000"
+                android:id="@+id/autoScrollBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@android:drawable/ic_media_play" />
+
+            <TextView
+                android:id="@+id/purimSongsButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginRight="60dp"
+                android:background="@drawable/round_corner"
+                android:paddingLeft="16dp"
+                android:paddingTop="8dp"
+                android:paddingRight="16dp"
+                android:paddingBottom="8dp"
+                android:text="@string/purim_songs"
+                android:textColor="@android:color/white"
+                android:textSize="33sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/blessingsTv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="@drawable/round_corner"
+                android:paddingLeft="16dp"
+                android:paddingTop="8dp"
+                android:paddingRight="16dp"
+                android:paddingBottom="8dp"
+                android:text="@string/megilla_blessings"
+                android:textColor="@android:color/white"
+                android:textSize="33sp"
+                android:textStyle="bold" />
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+        <com.mobilegiants.megila.custom_views.InteractiveScrollView
+            android:id="@+id/myscrollview"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="@dimen/_34sdp">
+
+
+            <TextView
+                android:id="@+id/myTextViewTv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="48dp"
+                android:layout_marginRight="90dp"
+                android:layout_marginBottom="70dp"
+                android:keepScreenOn="true"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/_17ssp" />
+        </com.mobilegiants.megila.custom_views.InteractiveScrollView>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_weight="50"
+        android:orientation="horizontal"
+        android:weightSum="10">
+
+
+        <ImageButton
+            android:id="@+id/lawsBtn"
+            android:layout_width="115dp"
+            android:layout_height="106.5dp"
+            android:layout_weight="2.5"
+            android:background="@android:color/transparent"
+            android:src="@drawable/torah64" />
+
+        <ImageButton
+            android:id="@+id/rahashanBtn"
+            android:layout_width="115dp"
+            android:layout_height="106.5dp"
+            android:layout_weight="2.5"
+            android:background="@android:color/transparent"
+            android:src="@drawable/noisemaker1"
+
+
+            />
+
+        <ImageButton
+            android:id="@+id/gunfireBtn"
+            android:layout_width="115dp"
+            android:layout_height="106.5dp"
+            android:layout_weight="2.5"
+            android:background="@android:color/transparent"
+            android:src="@drawable/gun64"
+
+
+            />
+
+        <ImageButton
+            android:id="@+id/grenadeBtn"
+            android:layout_width="115dp"
+            android:layout_height="106.5dp"
+            android:layout_weight="2.5"
+            android:background="@android:color/transparent"
+            android:src="@drawable/grenade64"
+
+
+            />
+    </LinearLayout>
+
+
+</LinearLayout>

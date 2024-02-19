@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <application
+        android:name=".App"
+        android:hardwareAccelerated="true"
+        android:icon="@drawable/icon_256"
+        android:label="@string/app_name"
+        android:theme="@android:style/Theme.NoTitleBar">
+
+        <meta-data
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="ca-app-pub-8162884905586512~8683873443" />
+
+        <meta-data
+            android:name="com.pushwoosh.appid"
+            android:value="175F6-D80E0" />
+        <meta-data
+            android:name="com.pushwoosh.senderid"
+            android:value="@string/fcm_sender_id" />
+
+        <activity
+            android:name="com.mobilegiants.megila.MainActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:exported="true"
+            android:hardwareAccelerated="true"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.mobilegiants.megila.LawsOfPurimActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:exported="false"
+            android:hardwareAccelerated="true"
+            android:label="@string/title_activity_laws_of_purim"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.NoTitleBar" />
+        <activity
+            android:name="com.mobilegiants.megila.SongsActivity"
+            android:exported="false"
+            android:hardwareAccelerated="true"
+            android:label="@string/title_activity_songs"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+    </application>
+
+</manifest>
