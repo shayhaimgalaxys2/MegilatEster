@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "36275289680",
+    "project_id": "megilatester",
+    "storage_bucket": "megilatester.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:36275289680:android:7ab4867c304b4425085b55",
+        "android_client_info": {
+          "package_name": "com.mobilegiants.megila"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "36275289680-1m3ipf9tlaqrjf4cjqnbqail8q24875k.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAliv2VHNGH4RAQAZnRqLbTYaxUnX05yYM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "36275289680-1m3ipf9tlaqrjf4cjqnbqail8q24875k.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      },
+      "admob_app_id": "ca-app-pub-8162884905586512~8683873443"
+    }
+  ],
+  "configuration_version": "1"
+}
