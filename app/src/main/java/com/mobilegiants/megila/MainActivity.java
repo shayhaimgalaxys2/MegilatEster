@@ -330,7 +330,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initCustomTypeface() {
-        Typeface typeface = ResourcesCompat.getFont(this, R.font.shlomo_stam);
+        Typeface typeface = ResourcesCompat.getFont(this, R.font.stam);
         megillaTextTv.setTypeface(typeface);
     }
 
