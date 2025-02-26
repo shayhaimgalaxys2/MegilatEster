@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="white">#ffffff</color>
+    <color name="white_opacity_10">#1affffff</color>
+    <color name="white_opacity_20">#33ffffff</color>
+    <color name="white_opacity_30">#45ffffff</color>
+    <color name="white_opacity_40">#66ffffff</color>
+    <color name="white_opacity_60">#99FFFFFF</color>
+    <color name="white_opacity_80">#CCFFFFFF</color>
+    <color name="white_transparent">#59ffffff</color>
+    <color name="transparent">#00FFFFFF</color>
+    <color name="black">#000000</color>
+    <color name="light_grey_month">#EDF8FF</color>
+    <color name="black_transparent">#22000000</color>
+    <color name="black_transparent_80">#88000000</color>
+    <color name="black_transparent_50">#66000000</color>
+    <color name="gray">#666666</color>
+    <color name="gray_transparent">#22666666</color>
+    <color name="gray_transparent2">#33003659</color>
+    <color name="dark_grey_blue">#3a4b6a</color>
+    <color name="dark_grey_blue_opacity80">#803a4b6a</color>
+    <color name="light_grey">#a63a4b6a</color>
+    <color name="teal_blue">#00a4a6</color>
+    <color name="teal_blue_opacity_20">#1400a4a6</color>
+    <color name="teal_blue_opacity_50">#8000A4A6</color>
+    <color name="cerulean">#009fd4</color>
+    <color name="light_blue_grey">#cfe2f1</color>
+    <color name="light_blue_grey2">#e9f1ff</color>
+    <color name="water_blue">#1976d2</color>
+    <color name="water_blue_opacity_20">#141976d2</color>
+    <color name="red_pink">#f52854</color>
+    <color name="yellowy_brown">#b8860b</color>
+    <color name="yellowy_brown_opacity_20">#14b8860b</color>
+    <color name="duck_egg_blue">#e0eef9</color>
+    <color name="neon_red">#fd0d40</color>
+    <color name="blood_red">#710c04</color>
+    <color name="reddish_pink">#ff2951</color>
+    <color name="shadow">#805c5c5c</color>
+    <color name="beige">#D8C6A3</color>
+    <color name="greyish_brown_50">#803e3e3e</color>
+    <color name="greyish_brown_10">#033E3E3E</color>
+    <color name="reddish_pink_10">#19ff2951</color>
+    <color name="dark_red">#8b0000</color>
+    <color name="grey_line">#3324287d</color>
+    <color name="azure">#4dc8ce</color>
+    <color name="club_grey_background">#d4e4ed</color>
+    <color name="club_grey">#c1d7e5</color>
+    <color name="debit_spread_rounded_button_color">#e6f5fe</color>
+    <color name="dark_grey">#232e3e</color>
+    <color name="card_background">#73dcfc</color>
+    <color name="gradient_transparent_background">#001B5ECE</color>
+    <color name="text_black">#1a1a1a</color>
+    <color name="vouchers_bottom_text_background">#eceff5</color>
+
+    <color name="grey_white">#cadaf5</color>
+    <color name="grey_white_opacity80">#cccadaf5</color>
+
+    //new concept
+    <color name="blue265">#265ecd</color>
+    <color name="water_dark_blue">#1153c0</color>
+    <color name="blue">#1b5ece</color>
+    <color name="blue_opacity_50">#801B5ECE</color>
+    <color name="dark_blue">#1b5fce</color>
+    <color name="light_blue">#82d1ef</color>
+    <color name="light_blue_opacity_50">#8082D1EF</color>
+    <color name="light_blue_widget">#3071CE</color>
+    <color name="soft_blue">#64bfe2</color>
+    <color name="soft_blue_01">#457cd9</color>
+    <color name="blue_opacity_20">#341B5ECE</color>
+    <color name="blue_opacity_10">#1A1B5ECE</color>
+    <color name="faded_blue">#3c6fd3</color>
+    <color name="pale_grey">#ebeff9</color>
+    <color name="blue_mat">#508ef1</color>
+    <color name="cornflower_blue">#608fdd</color>
+    <color name="perry_winkle">#8fbee5</color>
+    <color name="dark_powder_blue">#a6c2f2</color>
+    <color name="powder_blue">#bbd9f7</color>
+    <color name="brownish_grey">#666666</color>
+    <color name="grey03">#4DEDF8FF</color>
+    <color name="light_beige">#f7f9ff</color>
+    <color name="aquamarine">#00dab4</color>
+    <color name="mask">#66000000</color>
+    <color name="light_navy">#135874</color>
+    <color name="dark_aquamarine">#037762</color>
+    <color name="cosmic">#87495d</color>
+    <color name="validation_error">#d10a21</color>
+    <color name="bar_red">#d10a21</color>
+    <color name="red">#ea0b25</color>
+    <color name="nice_blue_shadow">#26137db0</color>
+    <color name="light_blue_vouchers">#d9effc</color>
+    <color name="medium_aquamarine">#00c99f</color>
+    <color name="text_dark_blue">#0d273c</color>
+    <color name="edit_circle_aquamarine">#02c6a4</color>
+    <color name="very_light_grey">#f8f9fe</color>
+    <color name="under_line_vouchers_pink">#F4B4D1</color>
+    <color name="DarkGreen03">#008040</color>
+    <color name="DarkGreen03_opacity_50">#80008040</color>
+    <color name="weak_teal">#769ee2</color>
+    <color name="soft_blue_05">#d3e3ed</color>
+    <color name="main_black">#171717</color>
+    <color name="black_opacity">#33171717</color>
+    <color name="gray_black">#33171717</color>
+    <color name="gray_black_2">#60171717</color>
+    <color name="light_green">#81ffcb</color>
+    <color name="shady_lady">#9d9d9d</color>
+    <color name="light_green_opacity_50">#8081FFCB</color>
+    <color name="pink">#fb8f8f</color>
+    <color name="yellow">#fcf26a</color>
+    <color name="benefits_background">#80e4fe</color>
+    <color name="dark_grey_blue_40a">#6629325a</color>
+    <color name="light_teal">#9fdeee</color>
+    <color name="green_whatsapp">#25d366</color>
+    <color name="greeny_blue">#56c4a1</color>
+    <color name="cyan">#82dcf8</color>
+    <color name="light_pink">#ffd4e1</color>
+    <color name="light_pink_2">#fdd2df</color>
+    <color name="light_pink_3">#fed4e1</color>
+    <color name="robin_egg_blue">#7ee5fc</color>
+    <color name="yellowish">#fcf26a</color>
+    <color name="yellowish_2">#fce28b</color>
+    <color name="robins_egg_blue">#a7e6fa</color>
+    <color name="new_card_order">#ffced4</color>
+    <color name="light_pick">#fdd2df</color>
+    <color name="clubs_light_pink">#fdd2df</color>
+    <color name="clubs_light_pink_opacity_50">#80fdd2df</color>
+    <color name="clubs_join_benefit_pink">#fed4e1</color>
+    <color name="light_green_69d">#00d69d</color>
+    <color name="shadow_search_filter">#ccd2de</color>
+    <color name="periwinkle">#BFCEED</color>
+    <color name="air_superiority_blue">#87A7C6</color>
+    <color name="black_gray_60_transparent">#99171717</color>
+
+    <color name="dark_green">#008554</color>
+    <color name="light_grey_blue">#7FA8C9</color>
+    <color name="cards_lobby_separator_color">#8fbce5</color>
+    <color name="credit_transactions_content_background">#fcfeff</color>
+    <color name="search_blue">#0446b5</color>
+    <color name="colorHighlight">#B6B6B6</color>
+    <color name="color_pink">#F2A6C0</color>
+    <color name="dark_color_pink">#C8799B</color>
+    <color name="mariner">#2F5DC7</color>
+    <color name="your_dash_color">#E4E4E4</color>
+    <color name="cherub">#F8D6E1</color>
+
+    <!-- Progress wheel colors -->
+    <color name="pw_overlay_color">@color/transparent</color>
+    <color name="pw_bar_color">@color/weak_teal</color>
+    <color name="pw_rim_color">#bdc3c7</color>
+    <color name="pw_text_color">@color/light_grey_blue</color>
+
+    <!-- Secure PIN pad colors -->
+    <color name="secure_pin_pad_color_1">@color/white</color>
+    <color name="secure_pin_pad_color_2">#000000</color>
+    <color name="secure_pin_pad_color_3">#aaaaaa</color>
+    <color name="secure_pin_pad_color_4">#0088ff</color>
+    <color name="secure_pin_pad_color_5">#999999</color>
+    <color name="secure_pin_pad_color_6">#f1f1f1</color>
+
+    <color name="search_icons_background">#80e4fe</color>
+
+    <!-- Benefits lobby cards colors -->
+    <color name="benefit_lobby_club_regular_card">#fcd2df</color>
+    <color name="benefit_lobby_club_last_card">#00c99f</color>
+
+    <!-- About screens -->
+    <color name="separator_color_1">#e8e8e8</color>
+
+    <!--    material_popup_menu-->
+    <color name="mpm_material_grey_850">#303030</color>
+    <color name="mpm_material_grey_50">#fafafa</color>
+
+    <color name="mpm_black_12_opacity">#1F000000</color>
+    <color name="mpm_black_54_opacity">#8A000000</color>
+    <color name="mpm_black_87_opacity">#DE000000</color>
+
+    <color name="mpm_white_12_opacity">#1FFFFFFF</color>
+    <color name="mpm_white_70_opacity">#B3FFFFFF</color>
+    <color name="mpm_white">#FFFFFFFF</color>
+
+    <!--    shadow_view-->
+    <color name="shadow_view_foreground_color_light">#33ffffff</color>
+    <color name="shadow_view_default_shadow_color">#DCDDE0</color>
+    <color name="shadow_view_foreground_color_dark">#1f000000</color>
+    <color name="shadow_view_foreground_color_grey">#1ff7f9ff</color>
+    <color name="shadow_color_rv_item">#c1e0f8</color>
+
+    <!-- Google Pay Colors - DO NOT MODIFY -->
+    <!--    <color name="colorPrimary">#3F51B5</color>-->
+    <!--    <color name="colorPrimaryDark">#303F9F</color>-->
+    <!--    <color name="colorAccent">#FF4081</color>-->
+
+    <!-- - - - - - - - - - - - - - - - - - -->
+
+    <color name="pie_color1">#cad0ff</color>
+    <color name="pie_color2">#4a50a8</color>
+
+    <integer-array name="pie_colors_list">
+        <item>@color/pie_color2</item>
+        <item>@color/white</item>
+        <item>@color/pie_color1</item>
+        <item>@color/white</item>
+    </integer-array>
+
+    <integer-array name="pie_colors_list_green">
+        <item>@color/light_green_69d</item>
+        <item>@color/search_blue</item>
+        <item>@color/white_opacity_80</item>
+        <item>@color/search_blue</item>
+    </integer-array>
+
+    <integer-array name="pie_colors_list_blue">
+        <item>@color/blue</item>
+        <item>@color/white</item>
+        <item>@color/grey_white_opacity80</item>
+        <item>@color/white</item>
+    </integer-array>
+
+</resources>
