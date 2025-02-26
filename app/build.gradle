@@ -9,7 +9,7 @@ android {
         compileSdk 35
         minSdkVersion 23
         targetSdkVersion 35
-        versionCode = 21
+        versionCode = 22
         versionName = "1.2.1"
         multiDexEnabled = true
     }
@@ -47,12 +47,13 @@ dependencies {
     implementation 'com.airbnb.android:lottie:6.6.2'
     implementation 'com.intuit.sdp:sdp-android:1.1.1'
     implementation 'com.intuit.ssp:ssp-android:1.1.1'
-    implementation platform('com.google.firebase:firebase-bom:33.9.0')
     implementation 'com.google.firebase:firebase-crashlytics-ktx'
     implementation 'com.google.firebase:firebase-analytics-ktx'
     implementation 'com.google.firebase:firebase-messaging:24.1.0'
     implementation 'com.pixplicity.easyprefs:EasyPrefs:1.10.0'
-
+    implementation platform('com.google.firebase:firebase-bom:33.9.0')
+    implementation 'com.google.firebase:firebase-perf'
+    implementation "com.google.firebase:firebase-config:22.1.0"
 
     implementation 'com.pushwoosh:pushwoosh:6.7.17'
     implementation 'com.pushwoosh:pushwoosh-firebase:6.7.17'

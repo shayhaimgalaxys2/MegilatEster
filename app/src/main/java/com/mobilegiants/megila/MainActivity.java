@@ -33,6 +33,7 @@ import com.google.android.gms.ads.MobileAds;
 import com.google.android.gms.ads.interstitial.InterstitialAd;
 import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback;
 import com.mobilegiants.megila.custom_views.InteractiveScrollView;
+import com.mobilegiants.megila.managers.RemoteConfigManager;
 import com.pixplicity.easyprefs.library.Prefs;
 import com.pushwoosh.Pushwoosh;
 
@@ -103,7 +104,7 @@ public class MainActivity extends AppCompatActivity {
         if (BuildConfig.DEBUG) {
             adUnitId = getString(R.string.ad_unit_id_debug);
         } else {
-            adUnitId = getString(R.string.ad_unit_id_release);
+            adUnitId = RemoteConfigManager.getInstance().getParameter(RemoteConfigManager.AD_UNIT_INTERSTITIAL_ID);
         }
 
         InterstitialAd.load(this, adUnitId, adRequest, new InterstitialAdLoadCallback() {
