@@ -118,7 +118,7 @@ public class SongsActivity extends ListActivity {
     }
 
     private void startRandomSong() {
-        Integer[] resIdsList = {R.raw.song1, R.raw.song2, R.raw.song3, R.raw.song4, R.raw.song5, R.raw.song6, R.raw.song7};
+        Integer[] resIdsList = {R.raw.song1, R.raw.song2, R.raw.song3, R.raw.song4, R.raw.song5, R.raw.song6, R.raw.song7, R.raw.porim_songs_set};
         Random generator = new Random();
         int randomIndex = generator.nextInt(resIdsList.length);
         stopBtn.setText(getString(R.string.pause_song));
@@ -130,6 +130,8 @@ public class SongsActivity extends ListActivity {
 
     private void initAdapter() {
         ArrayList<String> songs = new ArrayList<>();
+
+        songs.add(getString(R.string.song_name_new_machrozet));
         songs.add(getString(R.string.song_name_mishenichnas_adar));
         songs.add(getString(R.string.song_name_ve_nahafocho));
         songs.add(getString(R.string.song_name_layeodim_haita));
@@ -161,6 +163,7 @@ public class SongsActivity extends ListActivity {
             String mordechaiYaza = getString(R.string.song_name_mordechai_yaza);
             String hayavEinish = getString(R.string.song_name_hayav_einish);
             String machrozet = getString(R.string.song_name_machrozet);
+            String newMachrozet = getString(R.string.song_name_new_machrozet);
 
             if (song.equals(mishenichnasAdar)) {
                 mPlayer = MediaPlayer.create(SongsActivity.this, R.raw.song1);
@@ -176,6 +179,8 @@ public class SongsActivity extends ListActivity {
                 mPlayer = MediaPlayer.create(SongsActivity.this, R.raw.song6);
             } else if (song.equals(machrozet)) {
                 mPlayer = MediaPlayer.create(SongsActivity.this, R.raw.song7);
+            } else if (song.equals(newMachrozet)) {
+                mPlayer = MediaPlayer.create(SongsActivity.this, R.raw.porim_songs_set);
             }
 
             mPlayer.setOnCompletionListener(getOnCompletionListener());

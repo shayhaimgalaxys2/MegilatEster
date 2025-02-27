@@ -4,12 +4,15 @@ plugins {
     id 'com.google.firebase.crashlytics'
 }
 android {
+    buildFeatures {
+        buildConfig = true
+    }
     defaultConfig {
         applicationId "com.mobilegiants.megila"
         compileSdk 35
         minSdkVersion 23
         targetSdkVersion 35
-        versionCode = 22
+        versionCode = 23
         versionName = "1.2.1"
         multiDexEnabled = true
     }
@@ -40,7 +43,7 @@ android {
 
 dependencies {
     implementation('androidx.appcompat:appcompat:1.7.0')
-    implementation('androidx.activity:activity:1.10.0')
+    implementation('androidx.activity:activity:1.10.1')
     implementation('androidx.appcompat:appcompat-resources:1.7.0')
     implementation 'com.android.support:multidex:1.0.3'
     implementation 'com.google.android.gms:play-services-ads:24.0.0'
@@ -51,7 +54,7 @@ dependencies {
     implementation 'com.google.firebase:firebase-analytics-ktx'
     implementation 'com.google.firebase:firebase-messaging:24.1.0'
     implementation 'com.pixplicity.easyprefs:EasyPrefs:1.10.0'
-    implementation platform('com.google.firebase:firebase-bom:33.9.0')
+    implementation platform('com.google.firebase:firebase-bom:33.10.0')
     implementation 'com.google.firebase:firebase-perf'
     implementation "com.google.firebase:firebase-config:22.1.0"
 
