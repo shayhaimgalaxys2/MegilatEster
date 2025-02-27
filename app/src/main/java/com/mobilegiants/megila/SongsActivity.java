@@ -17,8 +17,7 @@ import com.google.android.gms.ads.AdSize;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.LoadAdError;
 import com.google.android.gms.ads.MobileAds;
-import com.google.android.gms.ads.initialization.InitializationStatus;
-import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
+import com.mobilegiants.megila.managers.RemoteConfigManager;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -53,7 +52,7 @@ public class SongsActivity extends ListActivity {
         if (BuildConfig.DEBUG) {
             adUnitId = getString(R.string.ad_unit_id_banner_debug);
         } else {
-            adUnitId = getString(R.string.ad_unit_id_banner_release);
+            adUnitId = RemoteConfigManager.getInstance().getParameter(RemoteConfigManager.AD_UNIT_BANNER_ID);
         }
         mAdView.setAdUnitId(adUnitId);
         mAdView.setAdSize(AdSize.LARGE_BANNER);

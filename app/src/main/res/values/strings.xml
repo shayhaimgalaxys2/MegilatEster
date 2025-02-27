@@ -4,9 +4,7 @@
     <string name="app_name">Megilat Ester</string>
     <string name="purim_songs">Purim songs</string>
     <string name="ad_unit_id_debug" translatable="false">ca-app-pub-3940256099942544/1033173712</string>
-    <string name="ad_unit_id_release" translatable="false">ca-app-pub-8162884905586512/9545528973</string>
     <string name="ad_unit_id_banner_debug" translatable="false">ca-app-pub-3940256099942544/6300978111</string>
-    <string name="ad_unit_id_banner_release" translatable="false">ca-app-pub-8162884905586512/8555272082</string>
     <string name="action_settings" translatable="false">Settings</string>
     <string name="fcm_sender_id" translatable="false">36275289680</string>
     <string name="about_us" translatable="false">Megillat Esther\n\nThis app was created by Mobile Giants.\n

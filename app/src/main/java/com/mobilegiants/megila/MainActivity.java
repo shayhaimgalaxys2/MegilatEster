@@ -15,6 +15,8 @@ import android.text.style.RelativeSizeSpan;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.ImageButton;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -31,12 +33,14 @@ import com.google.android.gms.ads.MobileAds;
 import com.google.android.gms.ads.interstitial.InterstitialAd;
 import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback;
 import com.mobilegiants.megila.custom_views.InteractiveScrollView;
+import com.mobilegiants.megila.managers.RemoteConfigManager;
 import com.pixplicity.easyprefs.library.Prefs;
 import com.pushwoosh.Pushwoosh;
 
 public class MainActivity extends AppCompatActivity {
 
     private static final long SPLASH_TIME_IN_MILLIS = 3000;
+    public static final float SAMECH_TEXT_SIZE = 0.6f;
     public static final float VERSE_TEXT_SIZE = 0.7f;
     public static final float CHAPTER_TEXT_SIZE = 1.15f;
     public static final String MOBILE_ADS_TAG = "MobileAds";
@@ -72,6 +76,17 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.splash);
         initAd();
         setFontScale();
+        initTopBar();
+    }
+
+    private void initTopBar() {
+        Window window = getWindow();
+        window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+        window.setStatusBarColor(getColor(R.color.beige));
+        View decorView = getWindow().getDecorView();
+        decorView.setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
+
     }
 
     @Override
@@ -89,7 +104,7 @@ public class MainActivity extends AppCompatActivity {
         if (BuildConfig.DEBUG) {
             adUnitId = getString(R.string.ad_unit_id_debug);
         } else {
-            adUnitId = getString(R.string.ad_unit_id_release);
+            adUnitId = RemoteConfigManager.getInstance().getParameter(RemoteConfigManager.AD_UNIT_INTERSTITIAL_ID);
         }
 
         InterstitialAd.load(this, adUnitId, adRequest, new InterstitialAdLoadCallback() {
@@ -395,8 +410,11 @@ public class MainActivity extends AppCompatActivity {
 
         String[] hamanArray = getResources().getStringArray(R.array.haman_array);
         for (String haman : hamanArray) {
-            megillaTextBuilder = colorSpecificText(megillaTextOriginal, megillaTextBuilder, haman, Color.RED, 0);
+            megillaTextBuilder = colorSpecificText(megillaTextOriginal, megillaTextBuilder, haman, getColor(R.color.red), 0);
         }
+
+        megillaTextBuilder = colorSpecificText(megillaTextOriginal, megillaTextBuilder, "(ס)", Color.BLACK, SAMECH_TEXT_SIZE);
+
 
         String[] sayingOutLoadVerses = getResources().getStringArray(R.array.saying_out_loud_verses);
         for (String verses : sayingOutLoadVerses) {
@@ -415,7 +433,7 @@ public class MainActivity extends AppCompatActivity {
                     endIndex,
                     SpannableStringBuilder.SPAN_EXCLUSIVE_EXCLUSIVE
             );
-            if (textSize != 0){
+            if (textSize != 0) {
                 megillaTextBuilder.setSpan(new RelativeSizeSpan(textSize), startIndex, endIndex, 0);
             }
             startIndex = originalText.indexOf(textToColor, endIndex);
