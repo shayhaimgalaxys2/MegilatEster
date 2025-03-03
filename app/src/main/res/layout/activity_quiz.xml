@@ -16,7 +16,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:background="?attr/selectableItemBackgroundBorderless"
-        android:contentDescription="יציאה"
+        android:contentDescription="@string/quiz_exit_description"
         android:src="@drawable/ic_close"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -44,7 +44,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:text="טוען שאלות חידון..."
+            android:text="@string/quiz_loading_questions"
             android:textColor="#9C27B0"
             android:textSize="18sp"
             android:textStyle="bold" />
@@ -67,7 +67,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
-            android:text="חידון ידע כללי לפורים"
+            android:text="@string/quiz_general_knowledge_title"
             android:textColor="#9C27B0"
             android:textSize="24sp"
             android:textStyle="bold"
@@ -81,12 +81,12 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="16dp"
-            android:text="ניקוד: 0/10"
             android:textColor="#673AB7"
             android:textSize="18sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/quizTitleTextView" />
+            app:layout_constraintTop_toBottomOf="@+id/quizTitleTextView"
+            tools:text="ניקוד: 0/10" />
 
         <androidx.cardview.widget.CardView
             android:id="@+id/questionCardView"
@@ -182,7 +182,7 @@
             android:layout_marginEnd="32dp"
             android:background="@drawable/button_background"
             android:padding="12dp"
-            android:text="שאלה הבאה"
+            android:text="@string/quiz_next_question"
             android:textColor="#FFFFFF"
             android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -240,7 +240,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:text="כל הכבוד!"
+                    android:text="@string/quiz_well_done_message"
                     android:textColor="#6A1B9A"
                     android:textSize="28sp"
                     android:textStyle="bold" />
@@ -269,7 +269,7 @@
                     android:layout_marginTop="24dp"
                     android:background="@drawable/button_background"
                     android:padding="12dp"
-                    android:text="נסה שוב"
+                    android:text="@string/quiz_try_again_message"
                     android:textColor="#FFFFFF"
                     android:textSize="18sp" />
 
@@ -280,7 +280,7 @@
                     android:layout_marginTop="24dp"
                     android:background="@drawable/button_background"
                     android:padding="12dp"
-                    android:text="יציאה"
+                    android:text="@string/quiz_exit_description"
                     android:textColor="#FFFFFF"
                     android:textSize="18sp" />
             </LinearLayout>

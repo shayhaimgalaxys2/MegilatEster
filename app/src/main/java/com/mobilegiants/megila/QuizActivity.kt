@@ -10,7 +10,6 @@ import android.view.animation.AccelerateDecelerateInterpolator
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.animation.doOnEnd
-import androidx.core.os.bundleOf
 import com.airbnb.lottie.LottieAnimationView
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
@@ -38,14 +37,6 @@ class QuizActivity : AppCompatActivity() {
         private const val KEY_SCORE = "current_score"
         private const val KEY_QUIZ_QUESTIONS = "quiz_questions"
 
-        // Factory method for creating bundle with quiz data
-        fun createBundle(questions: List<QuizQuestion>, currentIndex: Int, score: Int): Bundle {
-            return bundleOf(
-                KEY_QUIZ_QUESTIONS to Gson().toJson(questions),
-                KEY_CURRENT_QUESTION to currentIndex,
-                KEY_SCORE to score
-            )
-        }
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -63,7 +54,7 @@ class QuizActivity : AppCompatActivity() {
         setupButtonListeners()
 
         // Set title for the quiz
-        supportActionBar?.title = "חידון לפורים"
+        supportActionBar?.title = getString(R.string.quiz_title)
 
         // Restore state or initialize quiz
         if (savedInstanceState != null) {
@@ -131,7 +122,7 @@ class QuizActivity : AppCompatActivity() {
             showLoading(false)
             displayQuestion()
         } else {
-            showError("אירעה שגיאה בטעינת החידון")
+            showError(getString(R.string.quiz_fetch_error_message))
             finish()
         }
     }
@@ -146,7 +137,7 @@ class QuizActivity : AppCompatActivity() {
             quizQuestions = allQuestions.shuffled(Random).take(questionsToShow)
             quizQuestions.isNotEmpty()
         } catch (e: Exception) {
-            showError("שגיאה בפענוח נתוני החידון")
+            showError(getString(R.string.quiz_parse_error_message))
             false
         }
     }
@@ -165,7 +156,7 @@ class QuizActivity : AppCompatActivity() {
     private fun handleNextButtonClick() {
         // Check if an option is selected
         if (binding.radioGroup.checkedRadioButtonId == -1) {
-            showError("אנא בחר תשובה")
+            showError(getString(R.string.quiz_no_answer_selected_error_message))
             return
         }
 
@@ -211,7 +202,12 @@ class QuizActivity : AppCompatActivity() {
     }
 
     private fun updateScoreDisplay() {
-        binding.scoreTextView.text = "ניקוד: $score/${quizQuestions.size}"
+        binding.scoreTextView.text = buildString {
+            append(getString(R.string.quiz_score_title))
+            append(score)
+            append("/")
+            append(quizQuestions.size)
+        }
     }
 
     private fun advanceToNextQuestion() {
@@ -268,16 +264,18 @@ class QuizActivity : AppCompatActivity() {
     //region Animations
     private fun animateQuestionTransition(onAnimationEnd: () -> Unit) {
         // Slide out animation
-        val slideOut = ObjectAnimator.ofFloat(binding.questionCardView, View.TRANSLATION_X, 0f, -1000f).apply {
-            duration = 300
-            interpolator = AccelerateDecelerateInterpolator()
-        }
+        val slideOut =
+            ObjectAnimator.ofFloat(binding.questionCardView, View.TRANSLATION_X, 0f, -1000f).apply {
+                duration = 300
+                interpolator = AccelerateDecelerateInterpolator()
+            }
 
         // Slide in animation
-        val slideIn = ObjectAnimator.ofFloat(binding.questionCardView, View.TRANSLATION_X, 1000f, 0f).apply {
-            duration = 300
-            interpolator = AccelerateDecelerateInterpolator()
-        }
+        val slideIn =
+            ObjectAnimator.ofFloat(binding.questionCardView, View.TRANSLATION_X, 1000f, 0f).apply {
+                duration = 300
+                interpolator = AccelerateDecelerateInterpolator()
+            }
 
         slideOut.doOnEnd {
             onAnimationEnd()
@@ -322,8 +320,14 @@ class QuizActivity : AppCompatActivity() {
             playAnimation()
             addAnimatorListener(object : Animator.AnimatorListener {
                 override fun onAnimationStart(p0: Animator) {}
-                override fun onAnimationEnd(p0: Animator) { visibility = View.GONE }
-                override fun onAnimationCancel(p0: Animator) { visibility = View.GONE }
+                override fun onAnimationEnd(p0: Animator) {
+                    visibility = View.GONE
+                }
+
+                override fun onAnimationCancel(p0: Animator) {
+                    visibility = View.GONE
+                }
+
                 override fun onAnimationRepeat(p0: Animator) {}
             })
         }
@@ -339,7 +343,15 @@ class QuizActivity : AppCompatActivity() {
             val percentage = (score.toFloat() / quizQuestions.size) * 100
 
             // Set final score message
-            finalScoreText.text = "הניקוד הסופי שלך: $score מתוך ${quizQuestions.size}\n(${percentage.toInt()}%)"
+            finalScoreText.text = buildString {
+                append(getString(R.string.quiz_your_final_score_message_part_1))
+                append(score)
+                append(getString(R.string.quiz_your_final_score_message_part_2))
+                append(quizQuestions.size)
+                append("\n(")
+                append(percentage.toInt())
+                append("%)")
+            }
         }
 
         // Show and animate final score card

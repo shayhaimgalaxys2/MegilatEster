@@ -10,6 +10,20 @@
     <string name="auto_scroll_dialog_title">אנא בחר מהירות גלילה אוטומטית</string>
     <string name="auto_scroll_dialog_confirm">אישור</string>
     <string name="auto_scroll_dialog_cancel">ביטול</string>
+    <string name="quiz_parse_error_message">שגיאה בפענוח נתוני החידון</string>
+    <string name="quiz_fetch_error_message">אירעה שגיאה בטעינת החידון</string>
+    <string name="quiz_title">חידון לפורים</string>
+    <string name="quiz_no_answer_selected_error_message">אנא בחר תשובה</string>
+    <string name="quiz_score_title">ניקוד: </string>
+    <string name="quiz_your_final_score_message_part_1">הניקוד הסופי שלך: </string>
+    <string name="quiz_your_final_score_message_part_2"> מתוך </string>
+    <string name="quiz_exit_description">יציאה</string>
+    <string name="quiz_loading_questions">טוען את שאלות חידון...</string>
+    <string name="quiz_general_knowledge_title">חידון ידע כללי לפורים</string>
+    <string name="quiz_next_question">שאלה הבאה</string>
+    <string name="quiz_well_done_message">כל הכבוד!</string>
+    <string name="quiz_try_again_message">נסה שוב</string>
+
 </resources>
 
 
