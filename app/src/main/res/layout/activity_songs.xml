@@ -1,51 +1,60 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/blue"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingBottom="@dimen/_30sdp"
     tools:context=".SongsActivity">
-
 
     <FrameLayout
         android:id="@+id/bannerContainer"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         tools:background="@android:color/darker_gray"
         tools:layout_height="80dp" />
 
     <ListView
         android:id="@android:id/list"
-        android:layout_width="fill_parent"
-        android:layout_height="match_parent"
-        android:layout_above="@+id/stopBtn"
-        android:layout_below="@+id/bannerContainer" />
-
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:divider="@color/white"
+        android:dividerHeight="1dp"
+        android:fadeScrollbars="false"
+        android:scrollbarAlwaysDrawVerticalTrack="true"
+        android:scrollbarThumbVertical="@drawable/white_scrollbar"
+        android:scrollbars="vertical"
+        app:layout_constraintBottom_toTopOf="@+id/animationView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bannerContainer" />
 
     <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/animationView"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/_240sdp"
-        android:layout_above="@+id/stopBtn"
-        android:layout_marginBottom="@dimen/_16sdp"
-        android:visibility="invisible"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/_150sdp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@+id/seekBarView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@android:id/list"
         app:lottie_autoPlay="true"
         app:lottie_fileName="man_playing_drums.json"
         app:lottie_loop="true" />
 
-    <Button
-        android:id="@id/stopBtn"
-        android:layout_width="match_parent"
+    <include
+        android:id="@+id/seekBarView"
+        layout="@layout/media_player_seek_layout"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:text="@string/play_song"
-        android:textSize="@dimen/_18ssp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
-
-</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

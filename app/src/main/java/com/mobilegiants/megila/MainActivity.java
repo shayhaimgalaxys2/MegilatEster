@@ -62,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
     private ImageButton autoScrollBtn;
     private boolean isAutoScrollEnabled = false;
     private final Handler scrollHandler = new Handler();
-    private static final float SCROLL_AMOUNT = 1f;
+    private static final float SCROLL_AMOUNT = 0.5f;
     private int scrollYButton;
     private long onCreateTimestamp;
     private InterstitialAd mInterstitialAd;
@@ -246,7 +246,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
         showLawsBtn.setOnClickListener(v -> {
-            Intent intent = new Intent(MainActivity.this, LawsOfPurimActivity.class);
+            Intent intent = new Intent(MainActivity.this, QuizActivity.class);
             startActivity(intent);
 
         });

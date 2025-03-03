@@ -50,6 +50,13 @@
             android:label="@string/title_activity_songs"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity
+            android:name="com.mobilegiants.megila.QuizActivity"
+            android:exported="false"
+            android:hardwareAccelerated="true"
+            android:label="@string/title_activity_songs"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
     </application>
 
 </manifest>

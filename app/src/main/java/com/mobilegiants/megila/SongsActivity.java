@@ -3,12 +3,17 @@ package com.mobilegiants.megila;
 import android.app.ListActivity;
 import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.FrameLayout;
+import android.widget.ImageButton;
 import android.widget.ListView;
+import android.widget.SeekBar;
+import android.widget.TextView;
 
 import com.airbnb.lottie.LottieAnimationView;
 import com.google.android.gms.ads.AdListener;
@@ -25,9 +30,21 @@ import java.util.Random;
 public class SongsActivity extends ListActivity {
 
     private MediaPlayer mPlayer;
-    private Button stopBtn;
     private LottieAnimationView animationView;
     private AdView mAdView;
+    private SeekBar seekBar;
+    private TextView currentPositionTextView;
+    private TextView durationTextView;
+    private ImageButton playPauseButton;
+    private ImageButton rewindButton;
+    private ImageButton forwardButton;
+    private Handler handler = new Handler();
+    private Runnable updateSeekBar;
+    private Integer[] resIdsList = {
+            R.raw.song1, R.raw.song2, R.raw.song3, R.raw.song4,
+            R.raw.song5, R.raw.song6, R.raw.song7, R.raw.porim_songs_set
+    };
+    private int currentSongIndex = 0;
 
     public SongsActivity() {
     }
@@ -41,6 +58,109 @@ public class SongsActivity extends ListActivity {
         initAdapter();
         initBanner();
         initListOnItemClickListener();
+        initSeekBar();
+        initTopBar();
+    }
+
+    private void initTopBar() {
+        Window window = getWindow();
+        window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+        window.setStatusBarColor(getColor(R.color.blue));
+        View decorView = window.getDecorView();
+        decorView.setSystemUiVisibility(0);  // Remove any flags that make
+    }
+
+    private void initSeekBar() {
+        playPauseButton.setOnClickListener(v -> {
+            if (mPlayer == null) {
+                startRandomSong();
+                playPauseButton.setImageResource(android.R.drawable.ic_media_pause);
+                handler.post(updateSeekBar);
+                animationView.setVisibility(View.VISIBLE);
+            } else if (mPlayer.isPlaying()) {
+                mPlayer.pause();
+                playPauseButton.setImageResource(android.R.drawable.ic_media_play);
+                animationView.setVisibility(View.GONE);
+            } else {
+                mPlayer.start();
+                playPauseButton.setImageResource(android.R.drawable.ic_media_pause);
+                handler.post(updateSeekBar);
+                animationView.setVisibility(View.VISIBLE);
+            }
+        });
+
+        // Set up initial state
+        if (mPlayer != null) {
+            seekBar.setMax(mPlayer.getDuration());
+            durationTextView.setText(formatTime(mPlayer.getDuration()));
+
+            // Update seek bar as music plays
+            updateSeekBar = new Runnable() {
+                @Override
+                public void run() {
+                    if (mPlayer != null && mPlayer.isPlaying()) {
+                        int currentPosition = mPlayer.getCurrentPosition();
+                        seekBar.setProgress(currentPosition);
+                        currentPositionTextView.setText(formatTime(currentPosition));
+                    }
+                    handler.postDelayed(this, 1000);
+                }
+            };
+            handler.post(updateSeekBar);
+
+            // Set up seek bar change listener
+            seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+                @Override
+                public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                    if (fromUser && mPlayer != null) {
+                        mPlayer.seekTo(progress);
+                        currentPositionTextView.setText(formatTime(progress));
+                    }
+                }
+
+                @Override
+                public void onStartTrackingTouch(SeekBar seekBar) {
+                    // Optionally pause playback during seeking
+                }
+
+                @Override
+                public void onStopTrackingTouch(SeekBar seekBar) {
+                    // Optionally resume playback after seeking
+                }
+            });
+
+            // Set up control buttons
+
+            // Skip to next song
+            forwardButton.setOnClickListener(v -> {
+                if (mPlayer != null) {
+                    mPlayer.stop();
+                    mPlayer.release();
+                }
+                currentSongIndex = (currentSongIndex + 1) % resIdsList.length;
+                playSong(currentSongIndex);
+            });
+
+// Go to previous song
+            rewindButton.setOnClickListener(v -> {
+                if (mPlayer != null) {
+                    mPlayer.stop();
+                    mPlayer.release();
+                }
+                currentSongIndex = (currentSongIndex - 1 + resIdsList.length) % resIdsList.length;
+                playSong(currentSongIndex);
+            });
+        }
+    }
+
+    private void playSong(int index) {
+        mPlayer = MediaPlayer.create(SongsActivity.this, resIdsList[index]);
+        mPlayer.setOnCompletionListener(getOnCompletionListener());
+        mPlayer.start();
+        initSeekBar();
+        animationView.setVisibility(View.VISIBLE);
+        playPauseButton.setImageResource(android.R.drawable.ic_media_pause);
     }
 
     private void initBanner() {
@@ -97,35 +217,27 @@ public class SongsActivity extends ListActivity {
     }
 
     private void initViews() {
-        stopBtn = findViewById(R.id.stopBtn);
         animationView = findViewById(R.id.animationView);
+        seekBar = findViewById(R.id.seekBar);
+        currentPositionTextView = findViewById(R.id.currentPositionTextView);
+        durationTextView = findViewById(R.id.durationTextView);
+        playPauseButton = findViewById(R.id.playPauseButton);
+        rewindButton = findViewById(R.id.rewindButton);
+        forwardButton = findViewById(R.id.forwardButton);
     }
 
     private void initListeners() {
-        stopBtn.setOnClickListener(v -> {
-            if (mPlayer == null) {
-                startRandomSong();
-            } else if (mPlayer.isPlaying()) {
-                stopBtn.setText(getString(R.string.play_song));
-                animationView.setVisibility(View.INVISIBLE);
-                mPlayer.pause();
-            } else {
-                stopBtn.setText(getString(R.string.pause_song));
-                animationView.setVisibility(View.VISIBLE);
-                mPlayer.start();
-            }
-        });
     }
 
     private void startRandomSong() {
         Integer[] resIdsList = {R.raw.song1, R.raw.song2, R.raw.song3, R.raw.song4, R.raw.song5, R.raw.song6, R.raw.song7, R.raw.porim_songs_set};
         Random generator = new Random();
         int randomIndex = generator.nextInt(resIdsList.length);
-        stopBtn.setText(getString(R.string.pause_song));
         animationView.setVisibility(View.VISIBLE);
         mPlayer = MediaPlayer.create(SongsActivity.this, resIdsList[randomIndex]);
         mPlayer.setOnCompletionListener(getOnCompletionListener());
         mPlayer.start();
+        initSeekBar();
     }
 
     private void initAdapter() {
@@ -140,7 +252,7 @@ public class SongsActivity extends ListActivity {
         songs.add(getString(R.string.song_name_hayav_einish));
         songs.add(getString(R.string.song_name_machrozet));
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, songs);
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, R.layout.list_item, R.id.songTitle, songs);
 
         setListAdapter(adapter);
 
@@ -183,24 +295,32 @@ public class SongsActivity extends ListActivity {
                 mPlayer = MediaPlayer.create(SongsActivity.this, R.raw.porim_songs_set);
             }
 
+            initSeekBar();
             mPlayer.setOnCompletionListener(getOnCompletionListener());
             mPlayer.start();
-            stopBtn.setText(getString(R.string.pause_song));
             animationView.setVisibility(View.VISIBLE);
+            playPauseButton.setImageResource(android.R.drawable.ic_media_pause);
         });
     }
 
     private MediaPlayer.OnCompletionListener getOnCompletionListener() {
         return mediaPlayer -> runOnUiThread(() -> {
-            stopBtn.setText(getString(R.string.play_song));
-            animationView.setVisibility(View.INVISIBLE);
+            animationView.setVisibility(View.GONE);
         });
+    }
+
+    private String formatTime(int milliseconds) {
+        int seconds = milliseconds / 1000;
+        int minutes = seconds / 60;
+        seconds = seconds % 60;
+        return String.format("%d:%02d", minutes, seconds);
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
         if (mPlayer != null) {
+            handler.removeCallbacks(updateSeekBar);
             if (mPlayer.isPlaying()) {
                 mPlayer.stop();
             }
