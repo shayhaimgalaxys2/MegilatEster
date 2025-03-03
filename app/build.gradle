@@ -6,7 +6,9 @@ plugins {
 }
 android {
     buildFeatures {
-        buildConfig = true
+        viewBinding true
+        dataBinding true
+        buildConfig true
     }
     configurations.configureEach {
         resolutionStrategy {

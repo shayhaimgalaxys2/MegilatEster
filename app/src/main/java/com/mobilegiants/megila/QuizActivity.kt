@@ -7,203 +7,277 @@ import android.os.Bundle
 import android.view.View
 import android.view.WindowManager
 import android.view.animation.AccelerateDecelerateInterpolator
-import android.widget.Button
-import android.widget.ImageButton
-import android.widget.RadioButton
-import android.widget.RadioGroup
-import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.cardview.widget.CardView
 import androidx.core.animation.doOnEnd
+import androidx.core.os.bundleOf
 import com.airbnb.lottie.LottieAnimationView
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
+import com.mobilegiants.megila.databinding.ActivityQuizBinding
 import com.mobilegiants.megila.managers.RemoteConfigManager
 import kotlin.random.Random
 
 class QuizActivity : AppCompatActivity() {
-    private lateinit var questionTextView: TextView
-    private lateinit var radioGroup: RadioGroup
-    private lateinit var optionA: RadioButton
-    private lateinit var optionB: RadioButton
-    private lateinit var optionC: RadioButton
-    private lateinit var optionD: RadioButton
-    private lateinit var nextButton: Button
-    private lateinit var questionCardView: CardView
-    private lateinit var scoreTextView: TextView
-    private lateinit var loadingView: View
-    private lateinit var quizContent: View
-    private lateinit var correctAnswerAnimation: LottieAnimationView
-    private lateinit var wrongAnswerAnimation: LottieAnimationView
+    // View binding
+    private lateinit var binding: ActivityQuizBinding
 
+    // Quiz state
     private var currentQuestionIndex = 0
     private var score = 0
     private var quizQuestions = listOf<QuizQuestion>()
     private val gson = Gson()
+    private val questionsToShow = 10
 
+    companion object {
+        // Constants
+        private const val REMOTE_CONFIG_QUIZ_KEY = "purim_quiz_questions"
+
+        // Bundle keys
+        private const val KEY_CURRENT_QUESTION = "current_question_index"
+        private const val KEY_SCORE = "current_score"
+        private const val KEY_QUIZ_QUESTIONS = "quiz_questions"
+
+        // Factory method for creating bundle with quiz data
+        fun createBundle(questions: List<QuizQuestion>, currentIndex: Int, score: Int): Bundle {
+            return bundleOf(
+                KEY_QUIZ_QUESTIONS to Gson().toJson(questions),
+                KEY_CURRENT_QUESTION to currentIndex,
+                KEY_SCORE to score
+            )
+        }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_quiz)
+
+        // Initialize view binding
+        binding = ActivityQuizBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         // Set up app to support right-to-left text
         window.decorView.layoutDirection = View.LAYOUT_DIRECTION_RTL
 
-        initViews()
+        // Initialize views and settings
+        initTopBar()
+        setupButtonListeners()
 
         // Set title for the quiz
         supportActionBar?.title = "חידון לפורים"
 
-
-        // Initialize Firebase Remote Config
-        setupRemoteConfig()
-
-        // Setup button click listener
-        setupNextButton()
-        initTopBar()
+        // Restore state or initialize quiz
+        if (savedInstanceState != null) {
+            restoreState(savedInstanceState)
+        } else {
+            setupRemoteConfig()
+        }
     }
 
-    private fun initViews() {
-        // Initialize views
-        questionTextView = findViewById(R.id.questionTextView)
-        radioGroup = findViewById(R.id.radioGroup)
-        optionA = findViewById(R.id.optionA)
-        optionB = findViewById(R.id.optionB)
-        optionC = findViewById(R.id.optionC)
-        optionD = findViewById(R.id.optionD)
-        nextButton = findViewById(R.id.nextButton)
-        questionCardView = findViewById(R.id.questionCardView)
-        scoreTextView = findViewById(R.id.scoreTextView)
-        loadingView = findViewById(R.id.loadingView)
-        quizContent = findViewById(R.id.quizContent)
-        correctAnswerAnimation = findViewById(R.id.correctAnimationView)
-        wrongAnswerAnimation = findViewById(R.id.wrongAnimationView)
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        outState.putInt(KEY_CURRENT_QUESTION, currentQuestionIndex)
+        outState.putInt(KEY_SCORE, score)
+        outState.putString(KEY_QUIZ_QUESTIONS, gson.toJson(quizQuestions))
     }
 
+    private fun restoreState(savedInstanceState: Bundle) {
+        currentQuestionIndex = savedInstanceState.getInt(KEY_CURRENT_QUESTION, 0)
+        score = savedInstanceState.getInt(KEY_SCORE, 0)
+
+        val questionsJson = savedInstanceState.getString(KEY_QUIZ_QUESTIONS)
+        if (!questionsJson.isNullOrEmpty()) {
+            val type = object : TypeToken<List<QuizQuestion>>() {}.type
+            quizQuestions = gson.fromJson(questionsJson, type)
+
+            if (currentQuestionIndex < quizQuestions.size) {
+                displayQuestion()
+            } else {
+                showFinalScore()
+            }
+        } else {
+            setupRemoteConfig()
+        }
+    }
+
+    //region Initialization
     private fun initTopBar() {
-        val window = window
-        window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
-        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
-        window.statusBarColor = getColor(R.color.light_beige_quiz)
-        val decorView = getWindow().decorView
-        decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
+        window.apply {
+            clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
+            addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
+            statusBarColor = getColor(R.color.light_beige_quiz)
+        }
+        window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
     }
 
+    private fun setupButtonListeners() {
+        with(binding) {
+            nextButton.setOnClickListener { handleNextButtonClick() }
+            exitButton.setOnClickListener { finish() }
+            exitXButton.setOnClickListener { finish() }
+            retryButton.setOnClickListener { resetQuiz() }
+        }
+    }
+    //endregion
 
+    //region Quiz Logic
     private fun setupRemoteConfig() {
-        // Show loading state
         showLoading(true)
-
-        // Fetch remote config
         fetchRemoteConfig()
     }
 
     private fun fetchRemoteConfig() {
         RemoteConfigManager.getInstance().fetchRemoteConfigValues()
-        parseQuizQuestions()
-        // Hide loading, show quiz
-        showLoading(false)
-
-        // Display first question
-        if (quizQuestions.isNotEmpty()) {
+        if (parseQuizQuestions()) {
+            showLoading(false)
             displayQuestion()
         } else {
-            Toast.makeText(this, "אירעה שגיאה בטעינת החידון", Toast.LENGTH_LONG).show()
+            showError("אירעה שגיאה בטעינת החידון")
             finish()
         }
     }
 
-    private fun parseQuizQuestions() {
-        try {
-            val quizJson = RemoteConfigManager.getInstance().getParameter(Companion.REMOTE_CONFIG_QUIZ_KEY)
+    private fun parseQuizQuestions(): Boolean {
+        return try {
+            val quizJson = RemoteConfigManager.getInstance().getParameter(REMOTE_CONFIG_QUIZ_KEY)
             val type = object : TypeToken<List<QuizQuestion>>() {}.type
-            quizQuestions = gson.fromJson(quizJson, type)
-            quizQuestions = quizQuestions.shuffled(Random)
-            quizQuestions = quizQuestions.take(10)
+            val allQuestions: List<QuizQuestion> = gson.fromJson(quizJson, type)
+
+            // Shuffle and limit questions
+            quizQuestions = allQuestions.shuffled(Random).take(questionsToShow)
+            quizQuestions.isNotEmpty()
         } catch (e: Exception) {
-            Toast.makeText(this, "שגיאה בפענוח נתוני החידון", Toast.LENGTH_SHORT).show()
+            showError("שגיאה בפענוח נתוני החידון")
+            false
         }
     }
 
     private fun showLoading(show: Boolean) {
-        loadingView.visibility = if (show) View.VISIBLE else View.GONE
-        quizContent.visibility = if (show) View.GONE else View.VISIBLE
+        with(binding) {
+            loadingView.visibility = if (show) View.VISIBLE else View.GONE
+            quizContent.visibility = if (show) View.GONE else View.VISIBLE
+        }
     }
 
-    private fun setupNextButton() {
-        nextButton.setOnClickListener {
-            // Check if an option is selected
-            if (radioGroup.checkedRadioButtonId == -1) {
-                Toast.makeText(this, "אנא בחר תשובה", Toast.LENGTH_SHORT).show()
-                return@setOnClickListener
-            }
+    private fun showError(message: String) {
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+    }
 
-            // Check answer
-            val selectedOption = when (radioGroup.checkedRadioButtonId) {
-                R.id.optionA -> 0
-                R.id.optionB -> 1
-                R.id.optionC -> 2
-                R.id.optionD -> 3
-                else -> -1
-            }
-
-            val selectedAnswer = quizQuestions[currentQuestionIndex].options[selectedOption]
-
-            if (selectedAnswer == quizQuestions[currentQuestionIndex].correctAnswer) {
-                score++
-                scoreTextView.text = "ניקוד: $score/${quizQuestions.size}"
-                animateCorrectAnswer()
-            } else {
-                animateWrongAnswer()
-            }
-
-            // Move to next question with animation
-            currentQuestionIndex++
-            if (currentQuestionIndex < quizQuestions.size) {
-                animateQuestionTransition { displayQuestion() }
-            } else {
-                showFinalScore()
-            }
+    private fun handleNextButtonClick() {
+        // Check if an option is selected
+        if (binding.radioGroup.checkedRadioButtonId == -1) {
+            showError("אנא בחר תשובה")
+            return
         }
 
-        val exitButton = findViewById<Button>(R.id.exitButton)
-        val exitXButton = findViewById<ImageButton>(R.id.exitXButton)
-        exitButton.setOnClickListener {
-            finish()
+        // Process the answer
+        processAnswer()
+
+        // Move to next question
+        advanceToNextQuestion()
+    }
+
+    private fun processAnswer() {
+        val selectedOptionIndex = getSelectedOptionIndex()
+        if (selectedOptionIndex == -1) return
+
+        val currentQuestion = quizQuestions[currentQuestionIndex]
+        val selectedAnswer = currentQuestion.options[selectedOptionIndex]
+
+        if (selectedAnswer == currentQuestion.correctAnswer) {
+            handleCorrectAnswer()
+        } else {
+            handleWrongAnswer()
         }
-        exitXButton.setOnClickListener {
-            finish()
+    }
+
+    private fun getSelectedOptionIndex(): Int {
+        return when (binding.radioGroup.checkedRadioButtonId) {
+            R.id.optionA -> 0
+            R.id.optionB -> 1
+            R.id.optionC -> 2
+            R.id.optionD -> 3
+            else -> -1
+        }
+    }
+
+    private fun handleCorrectAnswer() {
+        score++
+        updateScoreDisplay()
+        animateCorrectAnswer()
+    }
+
+    private fun handleWrongAnswer() {
+        animateWrongAnswer()
+    }
+
+    private fun updateScoreDisplay() {
+        binding.scoreTextView.text = "ניקוד: $score/${quizQuestions.size}"
+    }
+
+    private fun advanceToNextQuestion() {
+        currentQuestionIndex++
+        if (currentQuestionIndex < quizQuestions.size) {
+            animateQuestionTransition { displayQuestion() }
+        } else {
+            showFinalScore()
         }
     }
 
     private fun displayQuestion() {
         val question = quizQuestions[currentQuestionIndex]
-        questionTextView.text = question.questionText
-        val mutableShuffledList =question.options.shuffled().toMutableList()
-        question.options = mutableShuffledList
-        optionA.text = question.options[0]
-        optionB.text = question.options[1]
-        optionC.text = question.options[2]
-        optionD.text = question.options[3]
 
-        // Clear previous selection
-        radioGroup.clearCheck()
+        with(binding) {
+            // Set question text
+            questionTextView.text = question.questionText
 
-        // Update the score display
-        scoreTextView.text = "ניקוד: $score/${quizQuestions.size}"
+            // Shuffle options for randomness
+            val shuffledOptions = question.options.shuffled().toMutableList()
+            question.options = shuffledOptions
+
+            // Set option texts
+            optionA.text = question.options[0]
+            optionB.text = question.options[1]
+            optionC.text = question.options[2]
+            optionD.text = question.options[3]
+
+            // Clear previous selection
+            radioGroup.clearCheck()
+        }
+
+        // Update score display
+        updateScoreDisplay()
     }
 
+    private fun resetQuiz() {
+        // Reset quiz state
+        currentQuestionIndex = 0
+        score = 0
+
+        // Reset UI
+        with(binding) {
+            questionCardView.visibility = View.VISIBLE
+            nextButton.visibility = View.VISIBLE
+            finalScoreCard.visibility = View.GONE
+        }
+
+        // Reload questions
+        setupRemoteConfig()
+    }
+    //endregion
+
+    //region Animations
     private fun animateQuestionTransition(onAnimationEnd: () -> Unit) {
         // Slide out animation
-        val slideOut = ObjectAnimator.ofFloat(questionCardView, View.TRANSLATION_X, 0f, -1000f)
-        slideOut.duration = 300
-        slideOut.interpolator = AccelerateDecelerateInterpolator()
+        val slideOut = ObjectAnimator.ofFloat(binding.questionCardView, View.TRANSLATION_X, 0f, -1000f).apply {
+            duration = 300
+            interpolator = AccelerateDecelerateInterpolator()
+        }
 
         // Slide in animation
-        val slideIn = ObjectAnimator.ofFloat(questionCardView, View.TRANSLATION_X, 1000f, 0f)
-        slideIn.duration = 300
-        slideIn.interpolator = AccelerateDecelerateInterpolator()
+        val slideIn = ObjectAnimator.ofFloat(binding.questionCardView, View.TRANSLATION_X, 1000f, 0f).apply {
+            duration = 300
+            interpolator = AccelerateDecelerateInterpolator()
+        }
 
         slideOut.doOnEnd {
             onAnimationEnd()
@@ -215,131 +289,82 @@ class QuizActivity : AppCompatActivity() {
 
     private fun animateCorrectAnswer() {
         // Scale animation for correct answer
-        val scaleX = ObjectAnimator.ofFloat(questionCardView, View.SCALE_X, 1f, 1.05f, 1f)
-        val scaleY = ObjectAnimator.ofFloat(questionCardView, View.SCALE_Y, 1f, 1.05f, 1f)
+        val scaleX = ObjectAnimator.ofFloat(binding.questionCardView, View.SCALE_X, 1f, 1.05f, 1f)
+        val scaleY = ObjectAnimator.ofFloat(binding.questionCardView, View.SCALE_Y, 1f, 1.05f, 1f)
 
-        val animatorSet = AnimatorSet()
-        animatorSet.playTogether(scaleX, scaleY)
-        animatorSet.duration = 300
-        animatorSet.start()
-        correctAnswerAnimation.visibility = View.VISIBLE
-        // 1. Set the animation JSON file
-        correctAnswerAnimation.setAnimation("correct_answer.json") // Replace with your animation file name
-        // 2. Start the animation
-        correctAnswerAnimation.playAnimation()
-        correctAnswerAnimation
-        // 3. Add animation end listener
-        correctAnswerAnimation.addAnimatorListener(object : Animator.AnimatorListener {
-            override fun onAnimationStart(p0: Animator) {
-            }
+        AnimatorSet().apply {
+            playTogether(scaleX, scaleY)
+            duration = 300
+            start()
+        }
 
-            override fun onAnimationEnd(p0: Animator) {
-                correctAnswerAnimation.visibility = View.GONE
-            }
-
-            override fun onAnimationCancel(p0: Animator) {
-                correctAnswerAnimation.visibility = View.GONE
-            }
-
-            override fun onAnimationRepeat(p0: Animator) {
-            }
-        })
+        playLottieAnimation(binding.correctAnimationView, "correct_answer.json")
     }
 
     private fun animateWrongAnswer() {
         // Shake animation for wrong answer
-        val shake = ObjectAnimator.ofFloat(
-            questionCardView,
+        ObjectAnimator.ofFloat(
+            binding.questionCardView,
             View.TRANSLATION_X,
-            0f,
-            25f,
-            -25f,
-            25f,
-            -25f,
-            15f,
-            -15f,
-            6f,
-            -6f,
-            0f
-        )
-        shake.duration = 500
-        shake.start()
+            0f, 25f, -25f, 25f, -25f, 15f, -15f, 6f, -6f, 0f
+        ).apply {
+            duration = 500
+            start()
+        }
 
-        wrongAnswerAnimation.visibility = View.VISIBLE
-        // 1. Set the animation JSON file
-        wrongAnswerAnimation.setAnimation("wrong_answer.json") // Replace with your animation file name
-        // 2. Start the animation
-        wrongAnswerAnimation.playAnimation()
-        // 3. Add animation end listener
-        wrongAnswerAnimation.addAnimatorListener(object : Animator.AnimatorListener {
-            override fun onAnimationStart(p0: Animator) {
-            }
-
-            override fun onAnimationEnd(p0: Animator) {
-                wrongAnswerAnimation.visibility = View.GONE
-            }
-
-            override fun onAnimationCancel(p0: Animator) {
-                wrongAnswerAnimation.visibility = View.GONE
-            }
-
-            override fun onAnimationRepeat(p0: Animator) {
-            }
-        })
+        playLottieAnimation(binding.wrongAnimationView, "wrong_answer.json")
     }
 
-    private fun showFinalScore() {
-        // Hide the quiz UI
-        questionCardView.visibility = View.GONE
-        nextButton.visibility = View.GONE
-
-        // Show a new card with final score
-        val finalScoreCard = findViewById<CardView>(R.id.finalScoreCard)
-        val finalScoreText = findViewById<TextView>(R.id.finalScoreText)
-        val retryButton = findViewById<Button>(R.id.retryButton)
-
-        // Calculate score percentage
-        val percentage = (score.toFloat() / quizQuestions.size) * 100
-
-        // Set final score message
-        finalScoreText.text =
-            "הניקוד הסופי שלך: $score מתוך ${quizQuestions.size}\n(${percentage.toInt()}%)"
-
-        // Show final score card with animation
-        finalScoreCard.visibility = View.VISIBLE
-        finalScoreCard.alpha = 0f
-        finalScoreCard.scaleX = 0.8f
-        finalScoreCard.scaleY = 0.8f
-
-        val fadeIn = ObjectAnimator.ofFloat(finalScoreCard, View.ALPHA, 0f, 1f)
-        val scaleUpX = ObjectAnimator.ofFloat(finalScoreCard, View.SCALE_X, 0.8f, 1f)
-        val scaleUpY = ObjectAnimator.ofFloat(finalScoreCard, View.SCALE_Y, 0.8f, 1f)
-
-        val animatorSet = AnimatorSet()
-        animatorSet.playTogether(fadeIn, scaleUpX, scaleUpY)
-        animatorSet.duration = 500
-        animatorSet.start()
-
-        // Set up retry button
-        retryButton.setOnClickListener {
-            // Reset the quiz
-            currentQuestionIndex = 0
-            score = 0
-
-            // Show quiz UI again
-            questionCardView.visibility = View.VISIBLE
-            nextButton.visibility = View.VISIBLE
-            finalScoreCard.visibility = View.GONE
-
-            // Display first question
-            setupRemoteConfig()
+    private fun playLottieAnimation(animationView: LottieAnimationView, animationFile: String) {
+        animationView.apply {
+            visibility = View.VISIBLE
+            setAnimation(animationFile)
+            playAnimation()
+            addAnimatorListener(object : Animator.AnimatorListener {
+                override fun onAnimationStart(p0: Animator) {}
+                override fun onAnimationEnd(p0: Animator) { visibility = View.GONE }
+                override fun onAnimationCancel(p0: Animator) { visibility = View.GONE }
+                override fun onAnimationRepeat(p0: Animator) {}
+            })
         }
     }
 
-    companion object {
-        // Remote config keys
-        private const val REMOTE_CONFIG_QUIZ_KEY = "purim_quiz_questions"
+    private fun showFinalScore() {
+        // Hide quiz UI
+        with(binding) {
+            questionCardView.visibility = View.GONE
+            nextButton.visibility = View.GONE
+
+            // Calculate score percentage
+            val percentage = (score.toFloat() / quizQuestions.size) * 100
+
+            // Set final score message
+            finalScoreText.text = "הניקוד הסופי שלך: $score מתוך ${quizQuestions.size}\n(${percentage.toInt()}%)"
+        }
+
+        // Show and animate final score card
+        showFinalScoreAnimation()
     }
+
+    private fun showFinalScoreAnimation() {
+        binding.finalScoreCard.apply {
+            visibility = View.VISIBLE
+            alpha = 0f
+            scaleX = 0.8f
+            scaleY = 0.8f
+        }
+
+        val fadeIn = ObjectAnimator.ofFloat(binding.finalScoreCard, View.ALPHA, 0f, 1f)
+        val scaleUpX = ObjectAnimator.ofFloat(binding.finalScoreCard, View.SCALE_X, 0.8f, 1f)
+        val scaleUpY = ObjectAnimator.ofFloat(binding.finalScoreCard, View.SCALE_Y, 0.8f, 1f)
+
+        AnimatorSet().apply {
+            playTogether(fadeIn, scaleUpX, scaleUpY)
+            duration = 500
+            start()
+        }
+    }
+    //endregion
 }
 
 // Data class for quiz questions - must match the JSON structure
