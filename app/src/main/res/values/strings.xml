@@ -87,8 +87,8 @@
     <string name="quiz_title">Purim Quiz</string>
     <string name="quiz_no_answer_selected_error_message">Please choose an answer.</string>
     <string name="quiz_score_title">Score: </string>
-    <string name="quiz_your_final_score_message_part_1">Your final score: </string>
-    <string name="quiz_your_final_score_message_part_2"> from </string>
+    <string name="quiz_your_final_score_message_part_1">Your final score:</string>
+    <string name="quiz_your_final_score_message_part_2">from</string>
     <string name="quiz_exit_description">exit</string>
     <string name="quiz_loading_questions">Loading quiz questions...</string>
     <string name="quiz_general_knowledge_title">Purim Quiz</string>

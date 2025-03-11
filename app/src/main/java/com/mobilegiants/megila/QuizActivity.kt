@@ -345,8 +345,11 @@ class QuizActivity : AppCompatActivity() {
             // Set final score message
             finalScoreText.text = buildString {
                 append(getString(R.string.quiz_your_final_score_message_part_1))
+                append(" ")
                 append(score)
+                append(" ")
                 append(getString(R.string.quiz_your_final_score_message_part_2))
+                append(" ")
                 append(quizQuestions.size)
                 append("\n(")
                 append(percentage.toInt())
