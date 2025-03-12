@@ -21,8 +21,8 @@ android {
         compileSdk 35
         minSdkVersion 23
         targetSdkVersion 35
-        versionCode = 26
-        versionName = "1.2.2"
+        versionCode = 27
+        versionName = "1.2.3"
         multiDexEnabled = true
     }
 
