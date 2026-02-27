@@ -2,7 +2,6 @@ import java.util.Properties
 
 plugins {
     alias(libs.plugins.android.application)
-    alias(libs.plugins.kotlin.android)
     alias(libs.plugins.google.services)
     alias(libs.plugins.firebase.crashlytics)
 }
@@ -16,7 +15,7 @@ val localProperties = Properties().apply {
 
 android {
     namespace = "com.mobilegiants.megila"
-    compileSdk = 35
+    compileSdk = 36
 
     buildFeatures {
         viewBinding = true
@@ -27,9 +26,12 @@ android {
     defaultConfig {
         applicationId = "com.mobilegiants.megila"
         minSdk = 23
-        targetSdk = 35
-        versionCode = 27
-        versionName = "1.2.3"
+        targetSdk = 36
+        versionCode = 29
+        versionName = "1.2.4"
+        ndk {
+            debugSymbolLevel = "FULL"
+        }
     }
 
     signingConfigs {
@@ -44,10 +46,6 @@ android {
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
-    }
-
-    kotlinOptions {
-        jvmTarget = "17"
     }
 
     buildTypes {
@@ -87,6 +85,9 @@ dependencies {
     implementation(libs.firebase.config)
     implementation(libs.firebase.firestore)
     implementation(libs.firebase.storage)
+
+    // WorkManager (force upgrade for 16KB page size support)
+    implementation(libs.work.runtime)
 
     // Google Ads
     implementation(libs.play.services.ads)

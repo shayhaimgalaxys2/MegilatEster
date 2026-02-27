@@ -3,8 +3,36 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="16dp"
-    tools:background="@color/blue">
+    android:background="@color/songs_header_bg"
+    android:padding="16dp">
+
+    <!-- Song title -->
+    <TextView
+        android:id="@+id/songTitleTextView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:ellipsize="end"
+        android:gravity="center"
+        android:maxLines="1"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="משנכנס אדר" />
+
+    <!-- SeekBar row -->
+    <TextView
+        android:id="@+id/currentPositionTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:text="0:00"
+        android:textColor="@color/white"
+        android:textSize="@dimen/_14ssp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/songTitleTextView" />
 
     <SeekBar
         android:id="@+id/seekBar"
@@ -12,23 +40,14 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
-        android:progressTint="@android:color/white"
-        android:progressBackgroundTint="@android:color/darker_gray"
-        android:thumbTint="@android:color/white"
+        android:contentDescription="@string/a11y_seek_bar"
+        android:progressBackgroundTint="@color/songs_seekbar_bg"
+        android:progressTint="@color/songs_seekbar_progress"
+        android:thumbTint="@color/songs_seekbar_progress"
+        app:layout_constraintBottom_toBottomOf="@+id/currentPositionTextView"
         app:layout_constraintEnd_toStartOf="@+id/durationTextView"
         app:layout_constraintStart_toEndOf="@+id/currentPositionTextView"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/currentPositionTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="0:00"
-        android:textColor="@color/white"
-        android:textSize="@dimen/_14ssp"
-        app:layout_constraintBottom_toBottomOf="@+id/seekBar"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/seekBar" />
+        app:layout_constraintTop_toTopOf="@+id/currentPositionTextView" />
 
     <TextView
         android:id="@+id/durationTextView"
@@ -41,40 +60,66 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/seekBar" />
 
+    <!-- Controls row -->
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="12dp"
+        android:gravity="center_vertical"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/seekBar">
 
         <ImageButton
-            android:id="@+id/rewindButton"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
+            android:id="@+id/shuffleButton"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:background="?attr/selectableItemBackgroundBorderless"
-            android:contentDescription="Rewind"
-            android:src="@android:drawable/ic_media_rew" />
+            android:contentDescription="@string/a11y_shuffle"
+            android:padding="8dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_shuffle" />
+
+        <ImageButton
+            android:id="@+id/rewindButton"
+            android:layout_width="44dp"
+            android:layout_height="44dp"
+            android:layout_marginStart="16dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="@string/a11y_previous_song"
+            android:padding="8dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_skip_previous" />
 
         <ImageButton
             android:id="@+id/playPauseButton"
-            android:layout_width="56dp"
-            android:layout_height="56dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:layout_marginStart="12dp"
+            android:layout_marginEnd="12dp"
             android:background="?attr/selectableItemBackgroundBorderless"
-            android:contentDescription="Play/Pause"
-            android:src="@android:drawable/ic_media_play" />
+            android:contentDescription="@string/a11y_play_pause"
+            android:padding="8dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_play_circle" />
 
         <ImageButton
             android:id="@+id/forwardButton"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
+            android:layout_width="44dp"
+            android:layout_height="44dp"
+            android:layout_marginEnd="16dp"
             android:background="?attr/selectableItemBackgroundBorderless"
-            android:contentDescription="Forward"
-            android:src="@android:drawable/ic_media_ff" />
+            android:contentDescription="@string/a11y_next_song"
+            android:padding="8dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_skip_next" />
+
+        <!-- Spacer to balance shuffle button -->
+        <View
+            android:layout_width="40dp"
+            android:layout_height="40dp" />
+
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

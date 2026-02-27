@@ -3,7 +3,6 @@ package com.mobilegiants.megila
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import android.view.WindowManager
 import android.widget.FrameLayout
 import android.widget.ImageButton
 import android.widget.SeekBar
@@ -37,9 +36,12 @@ class SongsActivity : AppCompatActivity() {
     private lateinit var seekBar: SeekBar
     private lateinit var currentPositionTextView: TextView
     private lateinit var durationTextView: TextView
+    private lateinit var songTitleTextView: TextView
     private lateinit var playPauseButton: ImageButton
     private lateinit var rewindButton: ImageButton
     private lateinit var forwardButton: ImageButton
+    private lateinit var shuffleButton: ImageButton
+    private lateinit var backButton: ImageButton
 
     private lateinit var songsAdapter: SongsAdapter
 
@@ -57,7 +59,7 @@ class SongsActivity : AppCompatActivity() {
 
     private fun initTopBar() {
         WindowCompat.setDecorFitsSystemWindows(window, true)
-        window.statusBarColor = getColor(R.color.blue)
+        window.statusBarColor = getColor(R.color.songs_header_bg)
         WindowInsetsControllerCompat(window, window.decorView).isAppearanceLightStatusBars = false
     }
 
@@ -67,9 +69,12 @@ class SongsActivity : AppCompatActivity() {
         seekBar = findViewById(R.id.seekBar)
         currentPositionTextView = findViewById(R.id.currentPositionTextView)
         durationTextView = findViewById(R.id.durationTextView)
+        songTitleTextView = findViewById(R.id.songTitleTextView)
         playPauseButton = findViewById(R.id.playPauseButton)
         rewindButton = findViewById(R.id.rewindButton)
         forwardButton = findViewById(R.id.forwardButton)
+        shuffleButton = findViewById(R.id.shuffleButton)
+        backButton = findViewById(R.id.backButton)
     }
 
     private fun initAdapter() {
@@ -86,6 +91,8 @@ class SongsActivity : AppCompatActivity() {
         playPauseButton.setOnClickListener { viewModel.togglePlayPause() }
         forwardButton.setOnClickListener { viewModel.playNext() }
         rewindButton.setOnClickListener { viewModel.playPrevious() }
+        shuffleButton.setOnClickListener { viewModel.playRandom() }
+        backButton.setOnClickListener { finish() }
 
         seekBar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
             override fun onProgressChanged(seekBar: SeekBar, progress: Int, fromUser: Boolean) {
@@ -109,11 +116,16 @@ class SongsActivity : AppCompatActivity() {
                     // Update selected position
                     songsAdapter.setSelectedPosition(state.currentSongIndex)
 
-                    // Update play/pause button
+                    // Update play/pause button icon
                     playPauseButton.setImageResource(
-                        if (state.isPlaying) android.R.drawable.ic_media_pause
-                        else android.R.drawable.ic_media_play
+                        if (state.isPlaying) R.drawable.ic_pause_circle
+                        else R.drawable.ic_play_circle
                     )
+
+                    // Update song title in player controls
+                    if (state.currentSongIndex in state.songs.indices) {
+                        songTitleTextView.text = state.songs[state.currentSongIndex].title
+                    }
 
                     // Update animation
                     animationView.visibility = if (state.isPlaying) View.VISIBLE else View.GONE

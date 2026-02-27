@@ -1,11 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- Base colors -->
     <color name="white">#ffffff</color>
     <color name="black">#000000</color>
     <color name="transparent">#00FFFFFF</color>
+
+    <!-- App main theme -->
     <color name="beige">#D8C6A3</color>
     <color name="blue">#1b5ece</color>
     <color name="red">#ea0b25</color>
-    <color name="light_beige_quiz">#FAEBD7</color>
     <color name="colorHighlight">#B6B6B6</color>
+
+    <!-- Main screen -->
+    <color name="main_button_bg">#BB000000</color>
+    <color name="main_bottom_bar_bg">#F5F0E6</color>
+    <color name="main_bottom_bar_icon_tint">#5D4037</color>
+    <color name="main_bottom_bar_label">#5D4037</color>
+
+    <!-- Quiz theme -->
+    <color name="light_beige_quiz">#FAEBD7</color>
+    <color name="quiz_primary">#9C27B0</color>
+    <color name="quiz_primary_dark">#673AB7</color>
+    <color name="quiz_primary_very_dark">#4A148C</color>
+    <color name="quiz_primary_light">#E1BEE7</color>
+    <color name="quiz_card_bg">#FFFFFF</color>
+    <color name="quiz_option_unselected_bg">#F5F5F5</color>
+    <color name="quiz_option_unselected_stroke">#CCCCCC</color>
+    <color name="quiz_final_card_title">#6A1B9A</color>
+    <color name="quiz_progress_bg">#E0E0E0</color>
+    <color name="quiz_progress_fill">#9C27B0</color>
+
+    <!-- Songs theme -->
+    <color name="songs_bg">#1b5ece</color>
+    <color name="songs_header_bg">#1650B0</color>
+    <color name="songs_now_playing">#64B5F6</color>
+    <color name="songs_item_bg">#2563D4</color>
+    <color name="songs_seekbar_progress">#FFFFFF</color>
+    <color name="songs_seekbar_bg">#555555</color>
+
+    <!-- Dialogs -->
+    <color name="dialog_bg">#FFFDF7</color>
+    <color name="dialog_title">#5D4037</color>
+    <color name="dialog_text">#3E2723</color>
+    <color name="dialog_subtitle">#795548</color>
+    <color name="dialog_divider">#E0D5C7</color>
+    <color name="dialog_button_bg">#5D4037</color>
+    <color name="dialog_button_text">#FFFFFF</color>
+    <color name="dialog_button_outline_text">#5D4037</color>
+    <color name="dialog_speed_selected_bg">#5D4037</color>
+    <color name="dialog_speed_selected_text">#FFFFFF</color>
+    <color name="dialog_speed_unselected_bg">#F5F0E6</color>
+    <color name="dialog_speed_unselected_text">#5D4037</color>
 </resources>

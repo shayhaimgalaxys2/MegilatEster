@@ -1,21 +1,20 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/beige"
     android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginLeft="-9dp"
+        android:layout_marginStart="-9dp"
         android:layout_marginTop="3dp"
-        android:layout_marginRight="-9dp"
+        android:layout_marginEnd="-9dp"
         android:layout_weight="488"
         android:background="@drawable/scroll_background"
         android:orientation="vertical">
-
 
         <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"
@@ -27,30 +26,29 @@
 
             <ImageButton
                 android:id="@+id/autoScrollBtn"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="16dp"
-                android:background="#bb000000"
-                android:paddingLeft="8dp"
-                android:paddingTop="4dp"
-                android:paddingRight="8dp"
-                android:paddingBottom="4dp"
-                android:src="@android:drawable/ic_media_play" />
-
+                android:layout_width="44dp"
+                android:layout_height="44dp"
+                android:layout_marginEnd="12dp"
+                android:background="@drawable/bg_auto_scroll_button"
+                android:contentDescription="@string/a11y_auto_scroll"
+                android:padding="10dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/ic_auto_scroll"
+                app:tint="@color/white" />
 
             <TextView
                 android:id="@+id/purimSongsButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginRight="16dp"
-                android:background="@drawable/round_corner"
+                android:layout_marginEnd="12dp"
+                android:background="@drawable/bg_main_chip"
+                android:ellipsize="end"
                 android:maxLines="1"
-                android:paddingLeft="16dp"
+                android:paddingStart="16dp"
                 android:paddingTop="8dp"
-                android:paddingRight="16dp"
+                android:paddingEnd="16dp"
                 android:paddingBottom="8dp"
-                android:singleLine="true"
                 android:text="@string/purim_songs"
                 android:textColor="@android:color/white"
                 android:textSize="18sp"
@@ -61,13 +59,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:background="@drawable/round_corner"
+                android:background="@drawable/bg_main_chip"
+                android:ellipsize="end"
                 android:maxLines="1"
-                android:paddingLeft="16dp"
+                android:paddingStart="16dp"
                 android:paddingTop="8dp"
-                android:paddingRight="16dp"
+                android:paddingEnd="16dp"
                 android:paddingBottom="8dp"
-                android:singleLine="true"
                 android:text="@string/megilla_blessings"
                 android:textColor="@android:color/white"
                 android:textSize="18sp"
@@ -75,21 +73,19 @@
 
         </androidx.appcompat.widget.LinearLayoutCompat>
 
-
         <com.mobilegiants.megila.custom_views.InteractiveScrollView
             android:id="@+id/myscrollview"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:layout_marginTop="20dp"
             android:layout_marginBottom="48dp">
-
 
             <TextView
                 android:id="@+id/myTextViewTv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="32dp"
-                android:layout_marginRight="38dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginEnd="38dp"
                 android:layout_marginBottom="24dp"
                 android:keepScreenOn="true"
                 android:textColor="@color/black"
@@ -100,62 +96,94 @@
     </LinearLayout>
 
     <LinearLayout
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="@dimen/_8sdp"
         android:layout_marginBottom="@dimen/_8sdp"
         android:layout_weight="40"
+        android:background="@color/main_bottom_bar_bg"
+        android:gravity="center"
         android:orientation="horizontal"
-        android:weightSum="10">
+        android:paddingStart="8dp"
+        android:paddingEnd="8dp">
 
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/bg_bottom_bar_item"
+            android:gravity="center"
+            android:orientation="vertical">
 
-        <ImageButton
-            android:id="@+id/lawsBtn"
-            android:layout_width="61.5dp"
-            android:layout_height="57dp"
-            android:layout_weight="2.5"
-            android:background="@android:color/transparent"
-            android:scaleType="fitCenter"
-            android:src="@drawable/ic_purim_quiz"
+            <ImageButton
+                android:id="@+id/lawsBtn"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:background="@android:color/transparent"
+                android:contentDescription="@string/a11y_quiz"
+                android:scaleType="fitCenter"
+                android:src="@drawable/ic_purim_quiz" />
 
+        </LinearLayout>
 
-            />
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/bg_bottom_bar_item"
+            android:gravity="center"
+            android:orientation="vertical">
 
-        <ImageButton
-            android:id="@+id/rahashanBtn"
-            android:layout_width="61.5dp"
-            android:layout_height="57dp"
-            android:layout_weight="2.5"
-            android:background="@android:color/transparent"
-            android:scaleType="fitCenter"
-            android:src="@drawable/noisemaker1"
+            <ImageButton
+                android:id="@+id/rahashanBtn"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:background="@android:color/transparent"
+                android:contentDescription="@string/a11y_noisemaker"
+                android:scaleType="fitCenter"
+                android:src="@drawable/noisemaker1" />
 
+        </LinearLayout>
 
-            />
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/bg_bottom_bar_item"
+            android:gravity="center"
+            android:orientation="vertical">
 
-        <ImageButton
-            android:id="@+id/gunfireBtn"
-            android:layout_width="61.5dp"
-            android:layout_height="57dp"
-            android:layout_weight="2.5"
-            android:background="@android:color/transparent"
-            android:scaleType="fitCenter"
-            android:src="@drawable/gun64"
+            <ImageButton
+                android:id="@+id/gunfireBtn"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:background="@android:color/transparent"
+                android:contentDescription="@string/a11y_gunfire"
+                android:scaleType="fitCenter"
+                android:src="@drawable/gun64" />
 
-            />
+        </LinearLayout>
 
-        <ImageButton
-            android:id="@+id/grenadeBtn"
-            android:layout_width="61.5dp"
-            android:layout_height="57dp"
-            android:layout_weight="2.5"
-            android:background="@android:color/transparent"
-            android:scaleType="fitCenter"
-            android:src="@drawable/grenade64" />
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/bg_bottom_bar_item"
+            android:gravity="center"
+            android:orientation="vertical">
 
+            <ImageButton
+                android:id="@+id/grenadeBtn"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:background="@android:color/transparent"
+                android:contentDescription="@string/a11y_grenade"
+                android:scaleType="fitCenter"
+                android:src="@drawable/grenade64" />
+
+        </LinearLayout>
 
     </LinearLayout>
-
 
 </LinearLayout>

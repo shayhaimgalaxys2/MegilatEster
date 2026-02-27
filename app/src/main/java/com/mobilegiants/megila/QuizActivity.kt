@@ -237,6 +237,15 @@ class QuizActivity : AppCompatActivity() {
 
             // Clear previous selection
             radioGroup.clearCheck()
+
+            // Update progress
+            questionProgressTextView.text = getString(
+                R.string.quiz_question_progress,
+                currentQuestionIndex + 1,
+                quizQuestions.size
+            )
+            quizProgressBar.max = quizQuestions.size
+            quizProgressBar.progress = currentQuestionIndex + 1
         }
 
         // Update score display
@@ -253,6 +262,7 @@ class QuizActivity : AppCompatActivity() {
             questionCardView.visibility = View.VISIBLE
             nextButton.visibility = View.VISIBLE
             finalScoreCard.visibility = View.GONE
+            quizProgressBar.progress = 0
         }
 
         // Reload questions
@@ -340,6 +350,14 @@ class QuizActivity : AppCompatActivity() {
 
             // Calculate score percentage
             val percentage = (score.toFloat() / quizQuestions.size) * 100
+
+            // Set score emoji based on performance
+            scoreEmojiTextView.text = when {
+                percentage >= 100 -> "\uD83C\uDF89\uD83C\uDFC6" // party + trophy
+                percentage >= 70 -> "\uD83D\uDE0A" // smiling face
+                percentage >= 40 -> "\uD83D\uDE42" // slightly smiling
+                else -> "\uD83D\uDE22" // crying face
+            }
 
             // Set final score message
             finalScoreText.text = buildString {

@@ -1,5 +1,6 @@
 package com.mobilegiants.megila
 
+import android.app.Dialog
 import android.content.Intent
 import android.content.res.Configuration
 import android.graphics.Color
@@ -12,16 +13,18 @@ import android.text.style.ForegroundColorSpan
 import android.text.style.RelativeSizeSpan
 import android.util.Log
 import android.view.View
+import android.view.Window
 import android.widget.ImageButton
 import android.widget.RelativeLayout
 import android.widget.TextView
 import androidx.activity.OnBackPressedCallback
 import androidx.activity.viewModels
-import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.res.ResourcesCompat
 import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsControllerCompat
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.google.android.gms.ads.AdError
 import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.FullScreenContentCallback
@@ -32,6 +35,7 @@ import com.mobilegiants.megila.custom_views.InteractiveScrollView
 import com.mobilegiants.megila.managers.AdManager
 import com.mobilegiants.megila.managers.PreferencesManager
 import com.mobilegiants.megila.managers.SoundEffectManager
+import com.mobilegiants.megila.ui.adapters.SpeedChipAdapter
 import com.mobilegiants.megila.viewmodels.MainViewModel
 import com.pushwoosh.Pushwoosh
 
@@ -209,7 +213,7 @@ class MainActivity : AppCompatActivity() {
 
         autoScrollBtn.setOnClickListener {
             if (viewModel.uiState.value.isAutoScrollEnabled) {
-                autoScrollBtn.setImageResource(android.R.drawable.ic_media_play)
+                autoScrollBtn.setImageResource(R.drawable.ic_auto_scroll)
                 viewModel.setAutoScroll(false)
                 scrollHandler.removeCallbacksAndMessages(null)
             } else {
@@ -221,25 +225,41 @@ class MainActivity : AppCompatActivity() {
     private fun initScrollSpeedDialog() {
         val items = resources.getStringArray(R.array.scroll_items)
         val lastCheckItem = PreferencesManager.scrollSpeed
-        var checkedItem = lastCheckItem
-        if (lastCheckItem != -1) checkedItem--
+        val initialSelected = if (lastCheckItem > 0) lastCheckItem - 1 else -1
 
-        AlertDialog.Builder(this)
-            .setTitle(getString(R.string.auto_scroll_dialog_title))
-            .setSingleChoiceItems(items, checkedItem) { _, which ->
-                val scrollRate = Character.getNumericValue(items[which][0])
-                PreferencesManager.scrollSpeed = scrollRate
-            }
-            .setPositiveButton(getString(R.string.auto_scroll_dialog_confirm)) { _, _ ->
-                val speed = PreferencesManager.scrollSpeed
-                if (speed != -1) {
-                    autoScrollBtn.setImageResource(android.R.drawable.ic_media_pause)
-                    viewModel.setAutoScroll(true, speed)
-                    initAutoScroll(speed)
+        val dialog = Dialog(this)
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
+        dialog.setContentView(R.layout.dialog_scroll_speed)
+        dialog.window?.setBackgroundDrawableResource(android.R.color.transparent)
+        dialog.window?.setLayout(
+            (resources.displayMetrics.widthPixels * 0.85).toInt(),
+            android.view.ViewGroup.LayoutParams.WRAP_CONTENT
+        )
+
+        var selectedSpeed = lastCheckItem
+
+        val speedGrid = dialog.findViewById<RecyclerView>(R.id.speedGrid)
+        speedGrid.layoutManager = GridLayoutManager(this, 3)
+        speedGrid.adapter = SpeedChipAdapter(items.toList(), initialSelected) { position ->
+            selectedSpeed = Character.getNumericValue(items[position][0])
+        }
+
+        dialog.findViewById<com.google.android.material.button.MaterialButton>(R.id.confirmButton)
+            .setOnClickListener {
+                if (selectedSpeed > 0) {
+                    PreferencesManager.scrollSpeed = selectedSpeed
+                    autoScrollBtn.setImageResource(R.drawable.ic_auto_scroll_active)
+                    viewModel.setAutoScroll(true, selectedSpeed)
+                    initAutoScroll(selectedSpeed)
                 }
+                dialog.dismiss()
             }
-            .setNegativeButton(getString(R.string.auto_scroll_dialog_cancel), null)
-            .show()
+
+        dialog.findViewById<com.google.android.material.button.MaterialButton>(R.id.cancelButton)
+            .setOnClickListener { dialog.dismiss() }
+
+        dialog.setCancelable(true)
+        dialog.show()
     }
 
     private fun initAutoScroll(scrollRate: Int) {
@@ -253,12 +273,23 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun showBlessingsDialog() {
-        AlertDialog.Builder(this, android.R.style.Theme_Material_Dialog)
-            .setTitle(getString(R.string.blessings_dialog_title))
-            .setMessage("${getString(R.string.blessings_before_the_reading)}\n\n\n${getString(R.string.blessings_after_the_reading)}")
-            .setCancelable(true)
-            .setPositiveButton(getString(R.string.blessings_dialog_close)) { dialog, _ -> dialog.cancel() }
-            .show()
+        val dialog = Dialog(this)
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
+        dialog.setContentView(R.layout.dialog_blessings)
+        dialog.window?.setBackgroundDrawableResource(android.R.color.transparent)
+        val maxHeight = (resources.displayMetrics.heightPixels * 0.8).toInt()
+        dialog.window?.setLayout(
+            (resources.displayMetrics.widthPixels * 0.9).toInt(),
+            maxHeight
+        )
+
+        dialog.findViewById<TextView>(R.id.beforeReadingText).text = getString(R.string.blessings_before_text)
+        dialog.findViewById<TextView>(R.id.afterReadingText).text = getString(R.string.blessings_after_text)
+        dialog.findViewById<com.google.android.material.button.MaterialButton>(R.id.closeButton)
+            .setOnClickListener { dialog.dismiss() }
+
+        dialog.setCancelable(true)
+        dialog.show()
     }
 
     private fun initCustomTypeface() {

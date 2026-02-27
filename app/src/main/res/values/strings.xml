@@ -14,8 +14,12 @@
      or\n
      +972504450614</string>
 
-    <string name="blessings_dialog_title" translatable="false">ברכות המגילה</string>
+    <string name="blessings_dialog_title">Megillah Blessings</string>
     <string name="blessings_dialog_close">Close</string>
+    <string name="blessings_before_title">Blessings Before the Reading</string>
+    <string name="blessings_after_title">After the Reading</string>
+    <string name="blessings_before_text" translatable="false">בָּרוּךְ אַתָּה יְיָ אֱלֹהֵינוּ מֶלֶךְ הָעוֹלָם, אֲשֶׁר קִדְּשָׁנוּ בְּמִצְוֹתָיו וְצִוָּנוּ עַל מִקְרָא מְגִלָּה.\nבָּרוּךְ אַתָּה יְיָ אֱלֹהֵינוּ מֶלֶךְ הָעוֹלָם. שֶׁעָשָׂה נִסִּים לַאֲבוֹתֵינוּ בַּיָּמִים הָהֵם בַּזְּמַן הַזֶּה.\nבָּרוּךְ אַתָּה יְיָ אֱלֹהֵינוּ מֶלֶךְ הָעוֹלָם. שֶׁהֶחֱיָנוּ וְקִיְּמָנוּ וְהִגִּיעָנוּ לַזְּמַן הַזֶּה.</string>
+    <string name="blessings_after_text" translatable="false">בָּרוּךְ אַתָּה יְיָ אֱלֹהֵינוּ מֶלֶךְ הָעוֹלָם, הָרָב אֶת רִיבֵנוּ, וְהַדָּן אֶת דִּינֵנוּ, וְהַנּוֹקֵם אֶת נִקְמָתֵנוּ, וְהַמְשַׁלֵּם גְּמוּל לְכָל אוֹיְבֵי נַפְשֵׁנוּ, וְהַנִּפְרָע לָנוּ מִצָּרֵינוּ. בָּרוּךְ אַתָּה יְיָ, הַנִּפְרָע לְעַמּוֹ יִשְׂרָאֵל מִכָּל צָרֵיהֶם, הָאֵל הַמּוֹשִׁיעַ.</string>
     <string name="blessings_before_the_reading" translatable="false">ברכות קודם המגילה\n\n
 בָּרוּךְ אַתָּה יְיָ אֱלֹהֵינוּ מֶלֶךְ הָעוֹלָם, אֲשֶׁר קִדְּשָׁנוּ בְּמִצְוֹתָיו וְצִוָּנוּ עַל מִקְרָא מְגִלָּה.
 בָּרוּךְ אַתָּה יְיָ אֱלֹהֵינוּ מֶלֶךְ הָעוֹלָם. שֶׁעָשָׂה נִסִּים לַאֲבוֹתֵינוּ בַּיָּמִים הָהֵם בַּזְּמַן הַזֶּה.
@@ -95,6 +99,25 @@
     <string name="quiz_next_question">next question</string>
     <string name="quiz_well_done_message">Well done!</string>
     <string name="quiz_try_again_message">Try again</string>
+    <string name="quiz_question_progress">Question %1$d / %2$d</string>
+
+    <!-- Songs screen -->
+    <string name="songs_title">Purim Songs</string>
+    <string name="songs_now_playing">Now playing</string>
+    <string name="songs_shuffle">Shuffle</string>
+    <string name="songs_back">Back</string>
+
+    <!-- Accessibility -->
+    <string name="a11y_auto_scroll">Auto scroll</string>
+    <string name="a11y_noisemaker">Noisemaker</string>
+    <string name="a11y_gunfire">Gunfire sound</string>
+    <string name="a11y_grenade">Explosion sound</string>
+    <string name="a11y_quiz">Purim quiz</string>
+    <string name="a11y_play_pause">Play or Pause</string>
+    <string name="a11y_next_song">Next song</string>
+    <string name="a11y_previous_song">Previous song</string>
+    <string name="a11y_shuffle">Shuffle songs</string>
+    <string name="a11y_seek_bar">Song progress</string>
 
     <string-array name="scroll_items" translatable="false">
         <item>1x</item>

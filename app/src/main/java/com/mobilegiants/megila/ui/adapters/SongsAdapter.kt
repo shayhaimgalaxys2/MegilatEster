@@ -3,6 +3,7 @@ package com.mobilegiants.megila.ui.adapters
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
@@ -37,10 +38,16 @@ class SongsAdapter(
 
     class SongViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val titleTv: TextView = itemView.findViewById(R.id.songTitle)
+        private val nowPlayingIndicator: ImageView = itemView.findViewById(R.id.nowPlayingIndicator)
 
         fun bind(song: Song, isSelected: Boolean) {
             titleTv.text = song.title
+            nowPlayingIndicator.visibility = if (isSelected) View.VISIBLE else View.GONE
             itemView.alpha = if (isSelected) 1f else 0.7f
+            itemView.setBackgroundResource(
+                if (isSelected) R.drawable.bg_song_item_selected
+                else R.drawable.bg_song_item
+            )
         }
     }
 
