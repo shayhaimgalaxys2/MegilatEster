@@ -5,14 +5,16 @@ import android.animation.AnimatorSet
 import android.animation.ObjectAnimator
 import android.os.Bundle
 import android.view.View
-import android.view.WindowManager
 import android.view.animation.AccelerateDecelerateInterpolator
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.animation.doOnEnd
+import androidx.core.view.WindowCompat
+import androidx.core.view.WindowInsetsControllerCompat
 import com.airbnb.lottie.LottieAnimationView
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
+import com.mobilegiants.megila.data.QuizQuestion
 import com.mobilegiants.megila.databinding.ActivityQuizBinding
 import com.mobilegiants.megila.managers.RemoteConfigManager
 import kotlin.random.Random
@@ -92,12 +94,9 @@ class QuizActivity : AppCompatActivity() {
 
     //region Initialization
     private fun initTopBar() {
-        window.apply {
-            clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
-            addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
-            statusBarColor = getColor(R.color.light_beige_quiz)
-        }
-        window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
+        WindowCompat.setDecorFitsSystemWindows(window, true)
+        window.statusBarColor = getColor(R.color.light_beige_quiz)
+        WindowInsetsControllerCompat(window, window.decorView).isAppearanceLightStatusBars = true
     }
 
     private fun setupButtonListeners() {
@@ -381,10 +380,3 @@ class QuizActivity : AppCompatActivity() {
     }
     //endregion
 }
-
-// Data class for quiz questions - must match the JSON structure
-data class QuizQuestion(
-    val questionText: String,
-    var options: MutableList<String>,
-    val correctAnswer: String
-)

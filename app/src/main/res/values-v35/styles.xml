@@ -1,11 +1,13 @@
 <resources>
 
-    <style name="AppTheme" parent="AppBaseTheme">
+    <style name="AppTheme" parent="Theme.Material3.Light.NoActionBar">
+        <item name="colorPrimary">@color/beige</item>
+        <item name="colorOnPrimary">@color/black</item>
+        <item name="colorSecondary">@color/blue</item>
+        <item name="colorOnSecondary">@color/white</item>
+        <item name="colorSurface">@color/white</item>
+        <item name="colorOnSurface">@color/black</item>
         <item name="android:windowOptOutEdgeToEdgeEnforcement">true</item>
-        <item name="android:colorControlHighlight">@color/colorHighlight</item>
     </style>
 
-    <style name="AppBaseTheme" parent="Theme.AppCompat.Light.NoActionBar">
-        <item name="android:windowOptOutEdgeToEdgeEnforcement">true</item>
-    </style>
 </resources>

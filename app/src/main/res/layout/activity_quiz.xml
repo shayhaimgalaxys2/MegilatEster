@@ -185,6 +185,7 @@
             android:text="@string/quiz_next_question"
             android:textColor="#FFFFFF"
             android:textSize="18sp"
+            app:backgroundTint="@null"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/questionCardView" />
@@ -271,7 +272,8 @@
                     android:padding="12dp"
                     android:text="@string/quiz_try_again_message"
                     android:textColor="#FFFFFF"
-                    android:textSize="18sp" />
+                    android:textSize="18sp"
+                    app:backgroundTint="@null" />
 
                 <Button
                     android:id="@+id/exitButton"
@@ -282,7 +284,8 @@
                     android:padding="12dp"
                     android:text="@string/quiz_exit_description"
                     android:textColor="#FFFFFF"
-                    android:textSize="18sp" />
+                    android:textSize="18sp"
+                    app:backgroundTint="@null" />
             </LinearLayout>
         </androidx.cardview.widget.CardView>
 

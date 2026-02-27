@@ -20,15 +20,11 @@
         tools:background="@android:color/darker_gray"
         tools:layout_height="80dp" />
 
-    <ListView
-        android:id="@android:id/list"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/songsRecyclerView"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:divider="@color/white"
-        android:dividerHeight="1dp"
-        android:fadeScrollbars="false"
-        android:scrollbarAlwaysDrawVerticalTrack="true"
-        android:scrollbarThumbVertical="@drawable/white_scrollbar"
+        android:clipToPadding="false"
         android:scrollbars="vertical"
         app:layout_constraintBottom_toTopOf="@+id/animationView"
         app:layout_constraintEnd_toEndOf="parent"
@@ -43,7 +39,7 @@
         app:layout_constraintBottom_toTopOf="@+id/seekBarView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@android:id/list"
+        app:layout_constraintTop_toBottomOf="@+id/songsRecyclerView"
         app:lottie_autoPlay="true"
         app:lottie_fileName="man_playing_drums.json"
         app:lottie_loop="true" />
