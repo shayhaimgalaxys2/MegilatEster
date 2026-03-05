@@ -1,4 +1,4 @@
-package com.mobilegiants.megila
+package com.mobilegiants.megila.v2
 
 import android.animation.Animator
 import android.animation.AnimatorSet
@@ -7,16 +7,18 @@ import android.os.Bundle
 import android.view.View
 import android.view.animation.AccelerateDecelerateInterpolator
 import android.widget.Toast
+import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.animation.doOnEnd
-import androidx.core.view.WindowCompat
-import androidx.core.view.WindowInsetsControllerCompat
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.updatePadding
 import com.airbnb.lottie.LottieAnimationView
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
-import com.mobilegiants.megila.data.QuizQuestion
-import com.mobilegiants.megila.databinding.ActivityQuizBinding
-import com.mobilegiants.megila.managers.RemoteConfigManager
+import com.mobilegiants.megila.v2.data.QuizQuestion
+import com.mobilegiants.megila.v2.databinding.ActivityQuizBinding
+import com.mobilegiants.megila.v2.managers.RemoteConfigManager
 import kotlin.random.Random
 
 class QuizActivity : AppCompatActivity() {
@@ -42,6 +44,7 @@ class QuizActivity : AppCompatActivity() {
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        enableEdgeToEdge()
         super.onCreate(savedInstanceState)
 
         // Initialize view binding
@@ -94,9 +97,12 @@ class QuizActivity : AppCompatActivity() {
 
     //region Initialization
     private fun initTopBar() {
-        WindowCompat.setDecorFitsSystemWindows(window, true)
-        window.statusBarColor = getColor(R.color.light_beige_quiz)
-        WindowInsetsControllerCompat(window, window.decorView).isAppearanceLightStatusBars = true
+        ViewCompat.setOnApplyWindowInsetsListener(binding.root) { view, windowInsets ->
+            val insets = windowInsets.getInsets(WindowInsetsCompat.Type.systemBars())
+            view.updatePadding(top = insets.top, bottom = insets.bottom)
+            WindowInsetsCompat.CONSUMED
+        }
+        ViewCompat.requestApplyInsets(binding.root)
     }
 
     private fun setupButtonListeners() {

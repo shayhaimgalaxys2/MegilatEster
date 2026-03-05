@@ -1,4 +1,4 @@
-package com.mobilegiants.megila
+package com.mobilegiants.megila.v2
 
 import android.os.Bundle
 import android.util.Log
@@ -7,10 +7,13 @@ import android.widget.FrameLayout
 import android.widget.ImageButton
 import android.widget.SeekBar
 import android.widget.TextView
+import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.WindowCompat
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.WindowInsetsControllerCompat
+import androidx.core.view.updatePadding
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
@@ -22,9 +25,9 @@ import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.AdSize
 import com.google.android.gms.ads.AdView
 import com.google.android.gms.ads.LoadAdError
-import com.mobilegiants.megila.managers.AdManager
-import com.mobilegiants.megila.ui.adapters.SongsAdapter
-import com.mobilegiants.megila.viewmodels.SongsViewModel
+import com.mobilegiants.megila.v2.managers.AdManager
+import com.mobilegiants.megila.v2.ui.adapters.SongsAdapter
+import com.mobilegiants.megila.v2.viewmodels.SongsViewModel
 import kotlinx.coroutines.launch
 
 class SongsActivity : AppCompatActivity() {
@@ -46,6 +49,7 @@ class SongsActivity : AppCompatActivity() {
     private lateinit var songsAdapter: SongsAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        enableEdgeToEdge()
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_songs)
         initViews()
@@ -58,9 +62,17 @@ class SongsActivity : AppCompatActivity() {
     }
 
     private fun initTopBar() {
-        WindowCompat.setDecorFitsSystemWindows(window, true)
-        window.statusBarColor = getColor(R.color.songs_header_bg)
+        // Dark header needs light (white) status bar icons
         WindowInsetsControllerCompat(window, window.decorView).isAppearanceLightStatusBars = false
+        WindowInsetsControllerCompat(window, window.decorView).isAppearanceLightNavigationBars = false
+
+        val rootView = findViewById<android.view.ViewGroup>(android.R.id.content).getChildAt(0)
+        ViewCompat.setOnApplyWindowInsetsListener(rootView) { view, windowInsets ->
+            val insets = windowInsets.getInsets(WindowInsetsCompat.Type.systemBars())
+            view.updatePadding(top = insets.top, bottom = insets.bottom)
+            WindowInsetsCompat.CONSUMED
+        }
+        ViewCompat.requestApplyInsets(rootView)
     }
 
     private fun initViews() {

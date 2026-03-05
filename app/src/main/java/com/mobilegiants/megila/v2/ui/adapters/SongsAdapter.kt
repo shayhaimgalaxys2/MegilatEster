@@ -1,4 +1,4 @@
-package com.mobilegiants.megila.ui.adapters
+package com.mobilegiants.megila.v2.ui.adapters
 
 import android.view.LayoutInflater
 import android.view.View
@@ -8,8 +8,8 @@ import android.widget.TextView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.mobilegiants.megila.R
-import com.mobilegiants.megila.data.Song
+import com.mobilegiants.megila.v2.R
+import com.mobilegiants.megila.v2.data.Song
 
 class SongsAdapter(
     private val onSongClick: (Int) -> Unit

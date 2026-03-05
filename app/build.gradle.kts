@@ -14,7 +14,7 @@ val localProperties = Properties().apply {
 }
 
 android {
-    namespace = "com.mobilegiants.megila"
+    namespace = "com.mobilegiants.megila.v2"
     compileSdk = 36
 
     buildFeatures {
@@ -24,11 +24,11 @@ android {
     }
 
     defaultConfig {
-        applicationId = "com.mobilegiants.megila"
+        applicationId = "com.mobilegiants.megila.v2"
         minSdk = 23
         targetSdk = 36
-        versionCode = 29
-        versionName = "1.2.4"
+        versionCode = 1
+        versionName = "1.0.0"
         ndk {
             debugSymbolLevel = "FULL"
         }
@@ -38,7 +38,7 @@ android {
         create("signingRelease") {
             storeFile = file("keystore/prod/release.keystore")
             storePassword = localProperties.getProperty("signing.storePassword", "")
-            keyAlias = "shay"
+            keyAlias = "shayhaim"
             keyPassword = localProperties.getProperty("signing.keyPassword", "")
         }
     }

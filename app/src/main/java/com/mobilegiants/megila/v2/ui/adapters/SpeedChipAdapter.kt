@@ -1,10 +1,10 @@
-package com.mobilegiants.megila.ui.adapters
+package com.mobilegiants.megila.v2.ui.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.mobilegiants.megila.R
+import com.mobilegiants.megila.v2.R
 
 class SpeedChipAdapter(
     private val items: List<String>,

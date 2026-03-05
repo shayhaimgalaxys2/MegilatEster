@@ -1,9 +1,9 @@
-package com.mobilegiants.megila.managers
+package com.mobilegiants.megila.v2.managers
 
 import android.content.Context
 import com.google.android.gms.ads.MobileAds
-import com.mobilegiants.megila.BuildConfig
-import com.mobilegiants.megila.R
+import com.mobilegiants.megila.v2.BuildConfig
+import com.mobilegiants.megila.v2.R
 
 object AdManager {
 

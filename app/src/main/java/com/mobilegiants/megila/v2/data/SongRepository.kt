@@ -1,9 +1,9 @@
-package com.mobilegiants.megila.data
+package com.mobilegiants.megila.v2.data
 
 import android.content.Context
 import android.util.Log
 import com.google.firebase.firestore.FirebaseFirestore
-import com.mobilegiants.megila.R
+import com.mobilegiants.megila.v2.R
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.tasks.await

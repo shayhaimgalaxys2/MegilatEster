@@ -1,9 +1,9 @@
-package com.mobilegiants.megila.managers
+package com.mobilegiants.megila.v2.managers
 
 import android.util.Log
 import com.google.firebase.remoteconfig.FirebaseRemoteConfig
 import com.google.firebase.remoteconfig.FirebaseRemoteConfigSettings
-import com.mobilegiants.megila.R
+import com.mobilegiants.megila.v2.R
 
 object RemoteConfigManager {
 

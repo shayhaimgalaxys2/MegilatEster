@@ -1,36 +1,26 @@
 {
   "project_info": {
-    "project_number": "36275289680",
-    "project_id": "megilatester",
-    "storage_bucket": "megilatester.appspot.com"
+    "project_number": "236846930776",
+    "project_id": "megilatester-b0114",
+    "storage_bucket": "megilatester-b0114.firebasestorage.app"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:36275289680:android:7ab4867c304b4425085b55",
+        "mobilesdk_app_id": "1:236846930776:android:701ec3ea914a87dea2632d",
         "android_client_info": {
-          "package_name": "com.mobilegiants.megila"
+          "package_name": "com.mobilegiants.megila.v2"
         }
       },
-      "oauth_client": [
-        {
-          "client_id": "36275289680-1m3ipf9tlaqrjf4cjqnbqail8q24875k.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
+      "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyAliv2VHNGH4RAQAZnRqLbTYaxUnX05yYM"
+          "current_key": "AIzaSyAn1q2UrgYgCMnQal8ut0LkLU3WOND5Gl0"
         }
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "36275289680-1m3ipf9tlaqrjf4cjqnbqail8q24875k.apps.googleusercontent.com",
-              "client_type": 3
-            }
-          ]
+          "other_platform_oauth_client": []
         }
       }
     }

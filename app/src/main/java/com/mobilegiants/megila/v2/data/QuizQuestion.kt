@@ -1,4 +1,4 @@
-package com.mobilegiants.megila.data
+package com.mobilegiants.megila.v2.data
 
 data class QuizQuestion(
     val questionText: String,

@@ -1,9 +1,9 @@
-package com.mobilegiants.megila.managers
+package com.mobilegiants.megila.v2.managers
 
 import android.content.Context
 import android.media.AudioAttributes
 import android.media.SoundPool
-import com.mobilegiants.megila.R
+import com.mobilegiants.megila.v2.R
 
 class SoundEffectManager(context: Context) {
 

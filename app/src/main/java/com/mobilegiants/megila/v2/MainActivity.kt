@@ -1,4 +1,4 @@
-package com.mobilegiants.megila
+package com.mobilegiants.megila.v2
 
 import android.app.Dialog
 import android.content.Intent
@@ -18,11 +18,13 @@ import android.widget.ImageButton
 import android.widget.RelativeLayout
 import android.widget.TextView
 import androidx.activity.OnBackPressedCallback
+import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.res.ResourcesCompat
-import androidx.core.view.WindowCompat
-import androidx.core.view.WindowInsetsControllerCompat
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.updatePadding
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.gms.ads.AdError
@@ -31,12 +33,12 @@ import com.google.android.gms.ads.FullScreenContentCallback
 import com.google.android.gms.ads.LoadAdError
 import com.google.android.gms.ads.interstitial.InterstitialAd
 import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback
-import com.mobilegiants.megila.custom_views.InteractiveScrollView
-import com.mobilegiants.megila.managers.AdManager
-import com.mobilegiants.megila.managers.PreferencesManager
-import com.mobilegiants.megila.managers.SoundEffectManager
-import com.mobilegiants.megila.ui.adapters.SpeedChipAdapter
-import com.mobilegiants.megila.viewmodels.MainViewModel
+import com.mobilegiants.megila.v2.custom_views.InteractiveScrollView
+import com.mobilegiants.megila.v2.managers.AdManager
+import com.mobilegiants.megila.v2.managers.PreferencesManager
+import com.mobilegiants.megila.v2.managers.SoundEffectManager
+import com.mobilegiants.megila.v2.ui.adapters.SpeedChipAdapter
+import com.mobilegiants.megila.v2.viewmodels.MainViewModel
 import com.pushwoosh.Pushwoosh
 
 class MainActivity : AppCompatActivity() {
@@ -60,13 +62,13 @@ class MainActivity : AppCompatActivity() {
     private var interstitialAd: InterstitialAd? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        enableEdgeToEdge()
         super.onCreate(savedInstanceState)
         Pushwoosh.getInstance().registerForPushNotifications()
         onCreateTimestamp = System.currentTimeMillis()
         setContentView(R.layout.splash)
         initAd()
         setFontScale()
-        initTopBar()
         setupBackHandler()
     }
 
@@ -78,10 +80,14 @@ class MainActivity : AppCompatActivity() {
         })
     }
 
-    private fun initTopBar() {
-        WindowCompat.setDecorFitsSystemWindows(window, true)
-        window.statusBarColor = getColor(R.color.beige)
-        WindowInsetsControllerCompat(window, window.decorView).isAppearanceLightStatusBars = true
+    private fun applyWindowInsets() {
+        val rootView = findViewById<android.view.ViewGroup>(android.R.id.content).getChildAt(0)
+        ViewCompat.setOnApplyWindowInsetsListener(rootView) { view, windowInsets ->
+            val insets = windowInsets.getInsets(WindowInsetsCompat.Type.systemBars())
+            view.updatePadding(top = insets.top, bottom = insets.bottom)
+            WindowInsetsCompat.CONSUMED
+        }
+        ViewCompat.requestApplyInsets(rootView)
     }
 
     override fun onConfigurationChanged(newConfig: Configuration) {
@@ -158,6 +164,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun initMainActivity() {
         setContentView(R.layout.activity_main)
+        applyWindowInsets()
         initViews()
         initSounds()
         initListeners()

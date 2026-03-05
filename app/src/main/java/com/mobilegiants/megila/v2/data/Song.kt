@@ -1,4 +1,4 @@
-package com.mobilegiants.megila.data
+package com.mobilegiants.megila.v2.data
 
 import android.net.Uri
 import androidx.media3.common.MediaItem

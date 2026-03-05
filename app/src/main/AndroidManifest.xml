@@ -24,7 +24,7 @@
             android:value="@string/fcm_sender_id" />
 
         <activity
-            android:name="com.mobilegiants.megila.MainActivity"
+            android:name="com.mobilegiants.megila.v2.MainActivity"
             android:configChanges="orientation|keyboardHidden"
             android:exported="true"
             android:hardwareAccelerated="true"
@@ -36,7 +36,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.mobilegiants.megila.LawsOfPurimActivity"
+            android:name="com.mobilegiants.megila.v2.LawsOfPurimActivity"
             android:configChanges="orientation|keyboardHidden"
             android:exported="false"
             android:hardwareAccelerated="true"
@@ -44,14 +44,14 @@
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme" />
         <activity
-            android:name="com.mobilegiants.megila.SongsActivity"
+            android:name="com.mobilegiants.megila.v2.SongsActivity"
             android:exported="false"
             android:hardwareAccelerated="true"
             android:label="@string/title_activity_songs"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.Songs" />
         <activity
-            android:name="com.mobilegiants.megila.QuizActivity"
+            android:name="com.mobilegiants.megila.v2.QuizActivity"
             android:exported="false"
             android:hardwareAccelerated="true"
             android:label="@string/title_activity_songs"

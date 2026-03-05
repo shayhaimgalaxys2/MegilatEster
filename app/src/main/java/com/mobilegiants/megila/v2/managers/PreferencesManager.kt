@@ -1,11 +1,11 @@
-package com.mobilegiants.megila.managers
+package com.mobilegiants.megila.v2.managers
 
 import android.content.Context
 import android.content.SharedPreferences
 
 object PreferencesManager {
 
-    private const val PREFS_NAME = "com.mobilegiants.megila"
+    private const val PREFS_NAME = "com.mobilegiants.megila.v2"
     private const val KEY_SCROLL_SPEED = "checked_item_key"
 
     private lateinit var prefs: SharedPreferences

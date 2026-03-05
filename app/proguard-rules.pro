@@ -15,7 +15,7 @@
 }
 
 # Keep data classes used with Gson
--keep class com.mobilegiants.megila.data.** { *; }
+-keep class com.mobilegiants.megila.v2.data.** { *; }
 
 # Media3 / ExoPlayer
 -keep class androidx.media3.** { *; }
@@ -29,4 +29,4 @@
 -dontwarn com.pushwoosh.**
 
 # Keep custom views referenced in XML layouts
--keep class com.mobilegiants.megila.custom_views.** { *; }
+-keep class com.mobilegiants.megila.v2.custom_views.** { *; }

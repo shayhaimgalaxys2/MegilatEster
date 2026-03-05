@@ -1,4 +1,4 @@
-package com.mobilegiants.megila.viewmodels
+package com.mobilegiants.megila.v2.viewmodels
 
 import androidx.lifecycle.ViewModel
 import kotlinx.coroutines.flow.MutableStateFlow

@@ -1,4 +1,4 @@
-package com.mobilegiants.megila.custom_views
+package com.mobilegiants.megila.v2.custom_views
 
 import android.content.Context
 import android.graphics.Matrix

@@ -2,7 +2,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <com.mobilegiants.megila.custom_views.TouchImageView
+    <com.mobilegiants.megila.v2.custom_views.TouchImageView
         android:id="@+id/imgDisplay"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

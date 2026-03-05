@@ -1,12 +1,12 @@
-package com.mobilegiants.megila.viewmodels
+package com.mobilegiants.megila.v2.viewmodels
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.media3.common.Player
 import androidx.media3.exoplayer.ExoPlayer
-import com.mobilegiants.megila.data.Song
-import com.mobilegiants.megila.data.SongRepository
+import com.mobilegiants.megila.v2.data.Song
+import com.mobilegiants.megila.v2.data.SongRepository
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow

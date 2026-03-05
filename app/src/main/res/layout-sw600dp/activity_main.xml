@@ -1,4 +1,5 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rootLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#D8C6A3"
@@ -69,7 +70,7 @@
         </androidx.appcompat.widget.LinearLayoutCompat>
 
 
-        <com.mobilegiants.megila.custom_views.InteractiveScrollView
+        <com.mobilegiants.megila.v2.custom_views.InteractiveScrollView
             android:id="@+id/myscrollview"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
@@ -87,7 +88,7 @@
                 android:keepScreenOn="true"
                 android:textColor="@android:color/black"
                 android:textSize="@dimen/_17ssp" />
-        </com.mobilegiants.megila.custom_views.InteractiveScrollView>
+        </com.mobilegiants.megila.v2.custom_views.InteractiveScrollView>
     </LinearLayout>
 
     <LinearLayout

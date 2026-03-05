@@ -1,10 +1,10 @@
-package com.mobilegiants.megila.viewmodels
+package com.mobilegiants.megila.v2.viewmodels
 
 import androidx.lifecycle.ViewModel
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
-import com.mobilegiants.megila.data.QuizQuestion
-import com.mobilegiants.megila.managers.RemoteConfigManager
+import com.mobilegiants.megila.v2.data.QuizQuestion
+import com.mobilegiants.megila.v2.managers.RemoteConfigManager
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
