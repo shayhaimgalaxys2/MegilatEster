@@ -6,7 +6,10 @@
     <string name="megilla_blessings">ברכות המגילה</string>
     <string name="play_song">נגן</string>
     <string name="pause_song">עצור</string>
+    <string name="blessings_dialog_title">ברכות המגילה</string>
     <string name="blessings_dialog_close">סגור</string>
+    <string name="blessings_before_title">ברכות קודם המגילה</string>
+    <string name="blessings_after_title">אחר קריאת המגילה</string>
     <string name="auto_scroll_dialog_title">אנא בחר מהירות גלילה אוטומטית</string>
     <string name="auto_scroll_dialog_confirm">אישור</string>
     <string name="auto_scroll_dialog_cancel">ביטול</string>
