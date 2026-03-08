@@ -14,7 +14,7 @@
 
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
-            android:value="ca-app-pub-6902788043339598~5418061797" />
+            android:value="ca-app-pub-6902788043339598~7749451592" />
 
         <meta-data
             android:name="com.pushwoosh.appid"
